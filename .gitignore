@@ -1,0 +1,12 @@
+/venv/
+__pycache__/
+.idea/
+
+
+db.sqlite3
+/testcase_manage/run/report/
+/testcase_manage/run/log/
+/report/
+/**/migrations/
+/testcase_manage/migrations/
+/product_manage/migrations/
