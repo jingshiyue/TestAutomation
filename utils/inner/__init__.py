@@ -1,1 +1,1 @@
-from common_method import *
+from .method import *
