@@ -51,7 +51,7 @@ class TestCase(BaseModel):
     id = models.AutoField(primary_key=True)
     casename = models.CharField('用例名',max_length=50,help_text='必填')
     modular_name = models.ForeignKey('product_manage.Modular', on_delete=models.SET_NULL, null=True,
-                                     verbose_name='所属项目 -> 模块')
+                                     verbose_name='所属项目 -> 模块',related_name="testcase")
     product_name = models.ForeignKey('product_manage.Product', on_delete=models.SET_NULL, null=True,
                                      verbose_name='所属项目') 
     case_type = models.CharField('用例类型',choices=CASE_TYPE,max_length=64,default='单接口')
