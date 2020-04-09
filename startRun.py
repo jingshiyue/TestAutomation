@@ -16,7 +16,24 @@ import json
 import re
 import pytest
 
-content = """
+from django.core.mail import send_mail
+
+def send_email(product_name:str, urlStr:str):
+    notifiers = Product.objects.all().get(name=product_name).notifier.all()
+    to_email = []
+    for notifier in notifiers:
+        to_email.append(notifier.email)
+
+    subject = '自动化测试平台'
+    message = ''
+    sender = settings.EMAIL_FROM
+    receiver = to_email
+    html_message = """<h1>%s, 自动化测试平台</h1>
+    自动化测试平台<br/><a href="http://fresh.skychar.cn/user/active/">%s</a>""" % (urlStr, urlStr)
+    send_mail(subject, message, sender, receiver, html_message=html_message)
+
+
+head = """
 import os,django,sys
 from utils.inner import *
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
@@ -34,21 +51,25 @@ import time
 import json
 import re
 import pytest
+"""
 
+content = """
 class Testcase_%s(object):
-    def __init__(self,casename,certificate=None):
+    def setup_method(self, method):
         super().__init__()
         self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
-        self.certificate = certificate
-        self.obj = TestCase.objects.all().get(casename=casename)
+        self.certificate = None
+        self.obj = TestCase.objects.all().get(casename="%s")
         self.caseDict = model_to_dict(self.obj)
         self.url = self.generate_url()
         self.method = self.caseDict.get("method")
         self.header = self.generate_header()
         self.body = self.generate_body()
-        logger.info(self.caseDict)
-        logger.info(self.obj)
+        logger.info("setup_method...")
 
+
+    def teardown_method(self, method):
+        logger.info("teardown_method...")
 
     def generate_url(self):
         host = self.obj.modular_name.host
@@ -91,7 +112,6 @@ class Testcase_%s(object):
         if self.caseDict.get("case_type") == '单接口':
             if self.method == 'POST':
                 logger.info(self.url)
-                logger.info(self.url)
                 res = requests.post(url=self.url,
                                     headers=self.header,
                                     json=self.body,
@@ -106,28 +126,22 @@ class Testcase_%s(object):
         else:
             logger.info("流程测试！！！")
 """
-
-
+foot = """
 
 
 if __name__=="__main__":
-    f = open("runCase.py","a",encoding='utf-8')
+    pytest.main(["-vv", "-s", "runCase.py", "--color=no", "--alluredir=./report/xml"])
+"""
 
-    cases = TestCase.objects.all().filter(product_name__name="动态布控",modular_name__name="数据平台")
-    logger.info(cases)
+if __name__=="__main__":
+    product = "动态布控"
+    modular = "数据平台"
+    cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
+    f = open("runCase.py","w",encoding='utf-8')
+    f.write(head)
     for case in cases:
-        logger.info(case.casename)
-        logger.info(type(case.casename))
-        f.write(content %case.casename.replace("-","_"))
-    
+        f.write(content %(case.casename.replace("-","_"),case.casename))
+    f.write(foot)
     f.close()
-
-
-
-    
-# if __name__=="__main__":
-#     cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
-#     casesList = []
-#     for case in cases:
-#         casesList.append(Testcase(case))
-#         pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+    os.system("runCase.py")
+    # send_email(product, "hello spring")
