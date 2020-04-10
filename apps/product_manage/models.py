@@ -86,7 +86,8 @@ class Modular(BaseModel):
     # key = models.CharField(max_length=64, verbose_name="KEY", help_text="秘钥")
 
     def __str__(self):
-        return self.to_product.name + ' -> ' + self.name
+        # return self.to_product.name + ' -> ' + self.name
+        return self.name
 
     class Meta:
         verbose_name = '模块管理'

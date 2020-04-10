@@ -3,6 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 {% load staticfiles %}
 <head>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     {# 网页标题内容块 #}
 	<title>{% block title %}{% endblock title %}</title>
@@ -10,11 +13,100 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> -->
 	{# 网页顶部引入文件块 #}
     {% block topfiles %}{% endblock topfiles %}
+    <style>
+        .myform{
+            padding-top: 30px;
+            /* padding-left: 200px; */
+        }
+    </style>
 </head>
 <body>
-    {% for obj in objs %}
-    <!-- <li><a href="#model0{{ forloop.counter }}" class="{{ type.logo }}">{{ type.name }}</a></li> -->
-    <li>{{ obj }}</li>
-    {% endfor %}
+    <form id="handleform" class="form-horizontal myform" method="post">
+        <div class="form-group">
+            <h1 class="col-lg-offset-5">测试模块配置</h1>
+        </div>
+        <br>
+    <div class="form-group row"> 
+        <div class="col-lg-offset-2 col-lg-6">
+            <div class="form-group">
+                <label class="control-label col-lg-2" for="modulars" >项目  </label>
+                <div class="col-lg-8"> 
+                    <select class="selectpicker form-control" name="products" id="products" title="请选择" onchange="queryModulars()">
+                        {% for product in products %}
+                            <option>{{ product.name }}</option>
+                        {% endfor %}
+                        <option selected>---请选择---</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label col-lg-2" for="modulars" >模块  </label>
+                <div class="col-lg-8">
+                    <select class="selectpicker form-control" id="modulars" >
+                        <option selected>---请选择---</option>
+                        <!-- {% for modular in modulars %}
+                            <option>{{ modular.name }}</option>
+                        {% endfor %} -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 ">
+            <button class="btn btn-info" id="submitButton" type="submit" class="btn btn-primary">确定</button>
+        </div>
+    </div> 
+    </form>
+    <script>
+        function string2Array(stringObj) {  
+            stringObj = stringObj.replace(/\[([\w, ]*)\]/, "$1");  
+            if (stringObj.indexOf("[") == 0) {// if has chinese  
+                stringObj = stringObj.substring(1, stringObj.length - 1);  
+            }  
+            var arr = stringObj.split(",");  
+            var newArray = [];//new Array();  
+            for ( var i = 0; i < arr.length; i++) {  
+                var arrOne = arr[i];  
+                newArray.push(arrOne);  
+            }  
+            // console.log(newArray);  
+            return newArray;  
+        };  
+
+        function queryModulars()
+        {
+            var options = $("#products option:selected");
+            var productName = options.val();　
+            var xmlhttp;    
+            if (window.XMLHttpRequest)
+            {
+                // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            alert(productName);
+            xmlhttp.open("POST","/testcase/queryModulars/",true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("product="+productName);
+
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    // alert("OKKKKK:"+ typeof(xmlhttp.responseText));
+                    var rest = string2Array(xmlhttp.responseText)
+                    for (let i = 0, len = rest.length; i < len; i++) {
+                        console.log(rest[i]);  //a b c d e
+                        $("#modulars").append("<option selected>"+ rest[i] +"</option>");
+                    }
+                }
+            }
+        }
+        
+    </script>
 </body>
 </html>
