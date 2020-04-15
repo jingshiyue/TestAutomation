@@ -87,7 +87,7 @@ class Modular(BaseModel):
 
     def __str__(self):
         # return self.to_product.name + ' -> ' + self.name
-        return self.name
+        return self.to_product.name + "->" + self.name
 
     class Meta:
         verbose_name = '模块管理'

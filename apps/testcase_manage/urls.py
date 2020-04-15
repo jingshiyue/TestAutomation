@@ -5,5 +5,6 @@ from . import views
 app_name = 'testcase_manage'
 urlpatterns = [
     path('index/',views.testcase_index,name='testcaseIndex'),  #/testcase/index
-    path('queryModulars/',views.queryModulars,name='queryModulars')
+    path('queryModulars/',views.queryModulars,name='queryModulars'),
+    path('generateCaseInfo/',views.generateCaseInfo,name='generateCaseInfo')
 ] 

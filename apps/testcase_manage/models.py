@@ -56,7 +56,7 @@ class TestCase(BaseModel):
                                      verbose_name='所属项目') 
     case_type = models.CharField('用例类型',choices=CASE_TYPE,max_length=64,default='单接口')
     method = models.CharField(max_length=32, verbose_name='请求方式', choices=HTTP_METHODS, default='POST')
-    url = models.CharField('接口路径',max_length=100,help_text='必填: e.g. /api/v1/face/boarding/push-plan')
+    api = models.CharField('接口路径',max_length=100,help_text='必填: e.g. /api/v1/face/boarding/push-plan')
     header = models.TextField('请求头列表', default=DEFAULT_RESPONSE_HEAD,
                             help_text='请求头,格式必须是标准的json格式!')
     certificate = models.TextField('证书',blank=True,help_text='证书字符,选填')

@@ -73,11 +73,11 @@ class Testcase_%s(object):
 
     def generate_url(self):
         host = self.obj.modular_name.host
-        api = self.caseDict.get('url')
+        api = self.caseDict.get('api')
         return host + api
 
     def generate_header(self):
-        return get_headers(self.caseDict.get('url'))
+        return get_headers(self.caseDict.get('api'))
         
     def generate_body(self):
         # if '单接口' in self.caseDict.get('case_type'):

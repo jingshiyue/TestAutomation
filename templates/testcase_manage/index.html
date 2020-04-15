@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+    <script src="http://malsup.github.io/jquery.form.js"></script>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     {# 网页标题内容块 #}
 	<title>{% block title %}{% endblock title %}</title>
@@ -15,56 +16,93 @@
     {% block topfiles %}{% endblock topfiles %}
     <style>
         .myform{
-            padding-top: 30px;
+            margin-top: 30px;
             /* padding-left: 200px; */
         }
     </style>
 </head>
 <body>
-    <form id="handleform" class="form-horizontal myform" method="post">
-        <div class="form-group">
-            <h1 class="col-lg-offset-5">测试模块配置</h1>
-        </div>
-        <br>
-    <div class="form-group row"> 
-        <div class="col-lg-offset-1 col-lg-6">
-            <div class="form-group">
-                <label class="control-label col-lg-2" for="modulars" >项目  </label>
-                <div class="col-lg-8"> 
-                    <select class="selectpicker form-control" name="products" id="products" title="请选择" onchange="queryModulars()">
-                        {% for product in products %}
-                            <option>{{ product.name }}</option>
-                        {% endfor %}
-                        <option selected>---请选择---</option>
-                    </select>
+    <div class="container">
+        <div class="row">
+                <div class="form-group">
+                    <h1 class="text-center">测试模块配置</h1>
                 </div>
-            </div>
-    
-            <div class="form-group">
-                <label class="control-label col-lg-2" for="modulars" >模块  </label>
-                <div class="col-lg-8">
-                    <select class="selectpicker form-control" id="modulars" >
-                        <option selected>---请选择---</option>
-                        <!-- {% for modular in modulars %}
-                            <option>{{ modular.name }}</option>
-                        {% endfor %} -->
-                    </select>
-                    <button class="btn btn-info" id="submitButton" type="submit" class="btn btn-primary">确定</button>
-                </div>
-            </div>
+                <br>
+                    <form class="form-horizontal" method="POST" id="queryForm">
+                        <div class="form-group">
+                            <label for="products" class="col-lg-3 control-label" >项目  </label>
+                            <div class="col-lg-6">
+                                <select class="selectpicker form-control" name="products" id="products" title="请选择" onchange="queryModulars()">
+                                    {% for product in products %}
+                                        <option>{{ product.name }}</option>
+                                    {% endfor %}
+                                    <option selected>---请选择---</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="modulars" class="col-lg-3 control-label" >模块  </label>
+                            <div class="col-lg-6">
+                                <select class="selectpicker form-control" name="modulars" id="modulars" >
+                                    <option selected>---请选择---</option>
+                                    <!-- {% for modular in modulars %}
+                                        <option>{{ modular.name }}</option>
+                                    {% endfor %} -->
+                                </select>
+                            </div>
+                            <div class="col-lg-1">
+                                <button id="queryButton" class="btn btn-primary" onclick="return queryCases()">查询</button>
+                            </div>
+                        </div>                 
+                    </form>
         </div>
-        <!-- <div class="col-lg-2 ">
-            <button class="btn btn-info" id="submitButton" type="submit" class="btn btn-primary">确定</button>
-        </div> -->
-    </div> 
-    </form>
+
+        <div class="row">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" id="caselist">
+            <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseInfo" >
+                <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
+                <!-- <button id="queryButton" class="btn" style="display:none" onclick="setOthers()">全选</button>
+                <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
+                <input class="btn" type="button" style="display:none" value="全选" onclick="setOthers()"/>
+                <input type="submit" value="测试用例" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
+                <!-- <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>选择</th>
+                            <th>用例名</th>
+                            <th>接口路径</th>
+                            <th>创建人</th>
+                        </tr>
+                    </thead>
+                    <tbody name="casebody" id="casebody">
+                    </tbody>
+                </table>
+                <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
+                <input class="btn" type="button" style="display:none" value="全选" onclick="setOthers()"/>
+                <button id="queryButton" class="btn" style="display:none">测试用例</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('input[type=checkbox]').change(function(){
+          $('#Jszzdm').val($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+        })
+    </script>
+
     <script>
         function string2Array(stringObj) {  
             stringObj = stringObj.replace(/\[([\w, ]*)\]/, "$1");  
             if (stringObj.indexOf("[") == 0) {// if has chinese  
                 stringObj = stringObj.substring(1, stringObj.length - 1);  
             }  
-            var arr = stringObj.split(",");  
+            var arr = stringObj.split(",");
             var newArray = [];//new Array();  
             for ( var i = 0; i < arr.length; i++) {  
                 var arrOne = arr[i];  
@@ -101,13 +139,137 @@
                     // alert("OKKKKK:"+ typeof(xmlhttp.responseText));
                     var rest = string2Array(xmlhttp.responseText)
                     for (let i = 0, len = rest.length; i < len; i++) {
-                        console.log(rest[i]);  //a b c d e
+                        // console.log(rest[i]);  //a b c d e
                         $("#modulars").append("<option selected>"+ rest[i] +"</option>");
                     }
                 }
             }
         }
         
+    
+    $(function() {
+        $("#selectAll").change(function() {
+            var checkboxs = $("#tbody").find("input[type='checkbox']");
+            var isChecked = $(this).is(":checked");
+            //严禁使用foreach，jq对象的遍历会使浏览器崩溃
+            for(var i = 0; i < checkboxs.length; i++) {
+                //临时变量，必须，否则只能选中最后一条记录
+                var temp = i;
+                $(checkboxs[temp]).prop("checked",isChecked);
+            }
+        });
+    });
+    
+    // $(function(){
+    //     $("#queryButton").click(function(){
+    //         $.ajax({
+    //             url:"/testcase/index/",
+    //             async:true,
+    //             type:"POST",
+    //             data:{products:"动态布控",modulars:"数据平台"},
+    //             success:function(result){
+    //                 alert("result")
+    //                 console.log(result);
+    //                 $("#caselist").html(result);
+    //         }});
+    //     });
+    // });
+    
+    function queryCases(){
+        $("#casebody").empty()
+        $("#queryForm").ajaxSubmit({
+                url:"/testcase/index/",
+                async:true,
+                type:"POST",
+                data:getCaseConf(),
+                success:function(data){
+                    var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td>{1}</td><td>{2}</td><td>{3}</td></tr>';
+                    var count = 0
+                    for (k in data){
+                        console.log(data[k]["casename"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
+                        var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["user"])
+                        $("#casebody").append(caseContents)
+                        count++
+                    }
+                    if (count > 0){
+                        console.log("aaaaaaaaaaaaaaaaaaa")
+                        $(".btn").show()
+                    }
+                }
+                
+        });
+        return false;//阻止页面跳转
+    }
+
+    function getCaseConf(){
+        var product = $("#products").val()
+        var modular = $("#modulars").val()
+        return {product,modular}
+    }
+
+    function sendCaseInfo(){
+        $.ajax({
+            url:"testcase/generateCaseInfo/",
+            async:true,
+            type:"POST",
+            data:{products:"动态布控",modulars:"数据平台"},
+            success:function(data){
+                alert(data)
+                // console.log(result);
+                // $("#caselist").html(result);
+        }});
+    }
+
+
+    String.format = function(src){  
+        if (arguments.length == 0) return null;  
+        var args = Array.prototype.slice.call(arguments, 1);  
+        return src.replace(/\{(\d+)\}/g, function(m, i){  
+            return args[i];  
+        });  
+    };  
+
+    //全选
+    function setAll() {
+        var loves = document.getElementsByName("love");
+        for (var i = 0; i < loves.length; i++) {
+            loves[i].checked = true;
+        }
+    }
+
+        //全不选函数
+    function setNo() {
+        var loves = document.getElementsByName("caseNum");
+        for (var i = 0; i < loves.length; i++) {
+            loves[i].checked = false;
+        }
+    }
+
+    //反选
+    function setOthers() {
+        var cases = document.getElementsByName("caseNum");
+        for (var i = 0; i < cases.length; i++) {
+            if (cases[i].checked == false)
+                cases[i].checked = true;
+            else
+                cases[i].checked = false;
+        }
+    }
+        
+    //全选/全不选操作
+    function setAllNo(){
+        var box = document.getElementById("boxid");
+        var loves = document.getElementsByName("love");
+        if(box.checked == false){
+            for (var i = 0; i < loves.length; i++) {
+                loves[i].checked = false;
+            }
+        }else{
+            for (var i = 0; i < loves.length; i++) {
+                loves[i].checked = true;
+                }
+        }
+    }
     </script>
 </body>
 </html>
