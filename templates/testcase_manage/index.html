@@ -19,6 +19,14 @@
             margin-top: 30px;
             /* padding-left: 200px; */
         }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            /* width: 100%; */
+            /* Set the fixed height of the footer here */
+            height: 50px;
+            /* background-color: #2a925e; */
+        }
     </style>
 </head>
 <body>
@@ -52,7 +60,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-1">
-                                <button id="queryButton" class="btn btn-primary" onclick="return queryCases()">查询</button>
+                                <button id="queryButton" class="btn btn-primary glyphicon glyphicon-search" onclick="return queryCases()"> 查询</button>
                             </div>
                         </div>                 
                     </form>
@@ -69,8 +77,8 @@
                 <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
                 <!-- <button id="queryButton" class="btn" style="display:none" onclick="setOthers()">全选</button>
                 <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
-                <input class="btn" type="button" style="display:none" value="全选" onclick="setOthers()"/>
-                <input type="submit" value="测试用例" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
+                <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
+                <input type="submit" value="执行" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
                 <!-- <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
                 <table class="table table-hover">
                     <thead>
@@ -85,16 +93,34 @@
                     </tbody>
                 </table>
                 <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
-                <input class="btn" type="button" style="display:none" value="全选" onclick="setOthers()"/>
-                <button id="queryButton" class="btn" style="display:none">测试用例</button>
+                <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
+                <button id="queryButton" class="btn" style="display:none">执行</button>
             </form>
         </div>
     </div>
-    <script>
-        $('input[type=checkbox]').change(function(){
-          $('#Jszzdm').val($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
-        })
-    </script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 footer">
+                <div class="text-center ">
+                    <!-- <div class="foot_link">
+                            <a href="#">关于我们</a>
+                            <span>|</span>
+                            <a href="#">联系我们</a>
+                            <span>|</span>
+                            <a href="#">招聘人才</a>
+                            <span>|</span>
+                            <a href="#">友情链接</a>
+                    </div> -->
+                    <p><small>CopyRight © 2020 重庆绿色技术智能研究院</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
 
     <script>
         function string2Array(stringObj) {  
@@ -145,131 +171,85 @@
                 }
             }
         }
-        
-    
-    $(function() {
-        $("#selectAll").change(function() {
-            var checkboxs = $("#tbody").find("input[type='checkbox']");
-            var isChecked = $(this).is(":checked");
-            //严禁使用foreach，jq对象的遍历会使浏览器崩溃
-            for(var i = 0; i < checkboxs.length; i++) {
-                //临时变量，必须，否则只能选中最后一条记录
-                var temp = i;
-                $(checkboxs[temp]).prop("checked",isChecked);
-            }
+            
+        $(function() {
+            $("#selectAll").change(function() {
+                var checkboxs = $("#tbody").find("input[type='checkbox']");
+                var isChecked = $(this).is(":checked");
+                //严禁使用foreach，jq对象的遍历会使浏览器崩溃
+                for(var i = 0; i < checkboxs.length; i++) {
+                    //临时变量，必须，否则只能选中最后一条记录
+                    var temp = i;
+                    $(checkboxs[temp]).prop("checked",isChecked);
+                }
+            });
         });
-    });
-    
-    // $(function(){
-    //     $("#queryButton").click(function(){
-    //         $.ajax({
-    //             url:"/testcase/index/",
-    //             async:true,
-    //             type:"POST",
-    //             data:{products:"动态布控",modulars:"数据平台"},
-    //             success:function(result){
-    //                 alert("result")
-    //                 console.log(result);
-    //                 $("#caselist").html(result);
-    //         }});
-    //     });
-    // });
-    
-    function queryCases(){
-        $("#casebody").empty()
-        $("#queryForm").ajaxSubmit({
-                url:"/testcase/index/",
+        
+        function queryCases(){
+            $("#casebody").empty()
+            $("#queryForm").ajaxSubmit({
+                    url:"/testcase/index/",
+                    async:true,
+                    type:"POST",
+                    data:getCaseConf(),
+                    success:function(data){
+                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td>{1}</td><td>{2}</td><td>{3}</td></tr>';
+                        var count = 0
+                        for (k in data){
+                            console.log(data[k]["casename"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
+                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["user"])
+                            $("#casebody").append(caseContents)
+                            count++
+                        }
+                        if (count > 0){
+                            console.log("aaaaaaaaaaaaaaaaaaa")
+                            $(".btn").show()
+                        }
+                    }
+                    
+            });
+            return false;//阻止页面跳转
+        }
+
+        function getCaseConf(){
+            var product = $("#products").val()
+            var modular = $("#modulars").val()
+            return {product,modular}
+        }
+
+        function sendCaseInfo(){
+            $.ajax({
+                url:"testcase/generateCaseInfo/",
                 async:true,
                 type:"POST",
-                data:getCaseConf(),
+                data:{products:"动态布控",modulars:"数据平台"},
                 success:function(data){
-                    var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td>{1}</td><td>{2}</td><td>{3}</td></tr>';
-                    var count = 0
-                    for (k in data){
-                        console.log(data[k]["casename"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
-                        var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["user"])
-                        $("#casebody").append(caseContents)
-                        count++
-                    }
-                    if (count > 0){
-                        console.log("aaaaaaaaaaaaaaaaaaa")
-                        $(".btn").show()
-                    }
-                }
-                
-        });
-        return false;//阻止页面跳转
-    }
-
-    function getCaseConf(){
-        var product = $("#products").val()
-        var modular = $("#modulars").val()
-        return {product,modular}
-    }
-
-    function sendCaseInfo(){
-        $.ajax({
-            url:"testcase/generateCaseInfo/",
-            async:true,
-            type:"POST",
-            data:{products:"动态布控",modulars:"数据平台"},
-            success:function(data){
-                alert(data)
-                // console.log(result);
-                // $("#caselist").html(result);
-        }});
-    }
-
-
-    String.format = function(src){  
-        if (arguments.length == 0) return null;  
-        var args = Array.prototype.slice.call(arguments, 1);  
-        return src.replace(/\{(\d+)\}/g, function(m, i){  
-            return args[i];  
-        });  
-    };  
-
-    //全选
-    function setAll() {
-        var loves = document.getElementsByName("love");
-        for (var i = 0; i < loves.length; i++) {
-            loves[i].checked = true;
+                    alert(data)
+                    // console.log(result);
+                    // $("#caselist").html(result);
+            }});
         }
-    }
 
-        //全不选函数
-    function setNo() {
-        var loves = document.getElementsByName("caseNum");
-        for (var i = 0; i < loves.length; i++) {
-            loves[i].checked = false;
-        }
-    }
 
-    //反选
-    function setOthers() {
-        var cases = document.getElementsByName("caseNum");
-        for (var i = 0; i < cases.length; i++) {
-            if (cases[i].checked == false)
-                cases[i].checked = true;
-            else
-                cases[i].checked = false;
-        }
-    }
-        
-    //全选/全不选操作
-    function setAllNo(){
-        var box = document.getElementById("boxid");
-        var loves = document.getElementsByName("love");
-        if(box.checked == false){
-            for (var i = 0; i < loves.length; i++) {
-                loves[i].checked = false;
+        String.format = function(src){  
+            if (arguments.length == 0) return null;  
+            var args = Array.prototype.slice.call(arguments, 1);  
+            return src.replace(/\{(\d+)\}/g, function(m, i){  
+                return args[i];  
+            });  
+        };  
+
+        //反选
+        function setOthers() {
+            var cases = document.getElementsByName("caseNum");
+            for (var i = 0; i < cases.length; i++) {
+                if (cases[i].checked == false)
+                    cases[i].checked = true;
+                else
+                    cases[i].checked = false;
             }
-        }else{
-            for (var i = 0; i < loves.length; i++) {
-                loves[i].checked = true;
-                }
         }
-    }
+            
     </script>
-</body>
+
 </html>
