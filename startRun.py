@@ -18,7 +18,7 @@ import pytest
 
 from django.core.mail import send_mail
 
-def send_email(product_name:str):
+def send_email(product_name:str,timeStr:str):
     notifiers = Product.objects.all().get(name=product_name).notifier.all()
     to_email = []
     for notifier in notifiers:
@@ -31,7 +31,7 @@ def send_email(product_name:str):
     html_message = """  <h3>自动化测试平台</h3>
 
                         <p>测试报告路径:<a href="{0}">{0}</a></p>
-                    """.format("http://192.168.1.42:8000/report/report.html")
+                    """.format("http://192.168.1.42:8000/report/report_"+timeStr+".html")
 
     send_mail(subject, message, sender, receiver, html_message=html_message)
 
@@ -119,14 +119,16 @@ class Testcase_%s(object):
     def test_run(self):
         if self.caseDict.get("case_type") == '单接口':
             if self.method == 'POST':
-                logger.info(self.url)
+                # logger.info(self.url)
                 res = requests.post(url=self.url,
                                     headers=self.header,
                                     json=self.body,
                                     verify=self.certificate
                                     )
                 res.close()
-                # logger.info(res.text)
+                logger.info("url: {}".format(self.url))
+                logger.info("请求参数: {}".format(self.body))
+                logger.info("响应: {}".format(res.text))
                 self.result = json.loads(res.text)
                 for k,v in self.checkList.items():
                     if isinstance(v, int):
@@ -145,18 +147,20 @@ foot = """
 
 
 if __name__=="__main__":
-    pytest.main(["-vv", "-s", "runCase.py", "--color=yes","--self-contained-html","--html=./report/report.html"])
+    pytest.main(["-vv", "-s", "runCase.py", "--color=yes","--reruns=2","--self-contained-html","--html=./report/report_%s.html"])
 """
 
 if __name__=="__main__":
     product = "动态布控"
     modular = "数据平台"
+    import time
+    timeStr = time.strftime('%Y%m%d%H%M%S',time.localtime()) #20200417135447
     cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
     f = open("runCase.py","w",encoding='utf-8')
     f.write(head)
     for case in cases:
         f.write(content %(case.casename.replace("-","_"),case.casename))
-    f.write(foot)
+    f.write(foot % timeStr)
     f.close()
     os.system("runCase.py")
     # send_email(product, "hello spring")

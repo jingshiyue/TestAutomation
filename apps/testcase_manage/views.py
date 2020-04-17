@@ -69,18 +69,19 @@ def generateCaseInfo(request):
         #ids = request.POST.getlist('caseNum') #['6', '7']
         ids = [int(x) for x in request.POST.getlist('caseNum')]
         import time,os
+        timeStr = time.strftime('%Y%m%d%H%M%S',time.localtime())
         from startRun import head,foot,content
         f = open("runCase.py","w",encoding='utf-8')
         f.write(head)
         for id in ids:
             case = TestCase.objects.all().get(id=id)
             f.write(content %(case.casename.replace("-","_"),case.casename))
-        f.write(foot)
+        f.write(foot % timeStr)
         f.close()
         os.system("runCase.py")
         content = """<h3>generate config sucessfully...</h3>
                      <p>{0} 条用例测试完成...</p>
                      <p>测试报告路径:<a href="{1}">{1}</a></p>
-                     """.format(len(ids),"http://192.168.1.42:8000/report/report.html")
-        send_email("动态布控")
+                     """.format(len(ids),"http://192.168.1.42:8000/report/report_"+timeStr+".html")
+        send_email("动态布控",timeStr)
         return HttpResponse(content)
