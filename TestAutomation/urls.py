@@ -8,4 +8,5 @@ urlpatterns = [
     path('testcase/',include('testcase_manage.urls',namespace='testcase_manage'))
 ] + static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
-    urlpatterns += static(settings.SCRIPTS_URL,document_root=settings.SCRIPTS_ROOT)
+    urlpatterns += static(settings.REPORT_URL,document_root=settings.REPORT_ROOT)
+

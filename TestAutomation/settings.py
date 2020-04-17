@@ -61,6 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'report'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -239,3 +240,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 SCRIPTS_URL = '/testScripts/'
 SCRIPTS_ROOT = os.path.join(BASE_DIR,'testScripts')
+
+REPORT_URL = '/report/'
+REPORT_ROOT = os.path.join(BASE_DIR, 'report')

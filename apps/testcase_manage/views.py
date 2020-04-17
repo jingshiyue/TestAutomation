@@ -60,12 +60,15 @@ def queryModulars(request):
         return rst
 
 def generateCaseInfo(request):
+    """
+    生成runCase.py脚本
+    """
+    from startRun import send_email
     if request.method == 'POST':
         logger.info(request.POST) #<QueryDict: {'caseNum': ['6', '7']}
         #ids = request.POST.getlist('caseNum') #['6', '7']
         ids = [int(x) for x in request.POST.getlist('caseNum')]
         import time,os
-        time.sleep(3)
         from startRun import head,foot,content
         f = open("runCase.py","w",encoding='utf-8')
         f.write(head)
@@ -76,6 +79,8 @@ def generateCaseInfo(request):
         f.close()
         os.system("runCase.py")
         content = """<h3>generate config sucessfully...</h3>
-                     %d 条用例将要执行测试...""" %len(ids)
-                     
+                     <p>{0} 条用例测试完成...</p>
+                     <p>测试报告路径:<a href="{1}">{1}</a></p>
+                     """.format(len(ids),"http://192.168.1.42:8000/report/report.html")
+        send_email("动态布控")
         return HttpResponse(content)

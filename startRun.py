@@ -18,7 +18,7 @@ import pytest
 
 from django.core.mail import send_mail
 
-def send_email(product_name:str, urlStr:str):
+def send_email(product_name:str):
     notifiers = Product.objects.all().get(name=product_name).notifier.all()
     to_email = []
     for notifier in notifiers:
@@ -28,8 +28,11 @@ def send_email(product_name:str, urlStr:str):
     message = ''
     sender = settings.EMAIL_FROM
     receiver = to_email
-    html_message = """<h1>%s, 自动化测试平台</h1>
-    自动化测试平台<br/><a href="http://fresh.skychar.cn/user/active/">%s</a>""" % (urlStr, urlStr)
+    html_message = """  <h3>自动化测试平台</h3>
+
+                        <p>测试报告路径:<a href="{0}">{0}</a></p>
+                    """.format("http://192.168.1.42:8000/report/report.html")
+
     send_mail(subject, message, sender, receiver, html_message=html_message)
 
 
@@ -65,11 +68,11 @@ class Testcase_%s(object):
         self.method = self.caseDict.get("method")
         self.header = self.generate_header()
         self.body = self.generate_body()
-        logger.info("setup_method...")
-
+        self.checkList = self.generate_checkList()
 
     def teardown_method(self, method):
         logger.info("teardown_method...")
+
 
     def generate_url(self):
         host = self.obj.modular_name.host
@@ -108,6 +111,11 @@ class Testcase_%s(object):
             return _body
         return None
 
+    def generate_checkList(self):
+        checkList = self.obj.check_list
+        checkList = json.loads(checkList) #{'status': 0, 'msg': 'Success'}
+        return checkList
+
     def test_run(self):
         if self.caseDict.get("case_type") == '单接口':
             if self.method == 'POST':
@@ -118,8 +126,15 @@ class Testcase_%s(object):
                                     verify=self.certificate
                                     )
                 res.close()
-                logger.info(res.text)
-                return res.text
+                # logger.info(res.text)
+                self.result = json.loads(res.text)
+                for k,v in self.checkList.items():
+                    if isinstance(v, int):
+                        assert self.result[k] == v,"结果校验不通过"
+                    if isinstance(v, str):
+                        matchObj = re.search(v,self.result[k],re.I)
+                        assert matchObj,"结果校验不通过"
+                return res
             if self.method == 'GET':
                 logger.info("GET 单接口暂没有！")
                 return None
@@ -130,7 +145,7 @@ foot = """
 
 
 if __name__=="__main__":
-    pytest.main(["-vv", "-s", "runCase.py", "--color=no", "--alluredir=./report/xml"])
+    pytest.main(["-vv", "-s", "runCase.py", "--color=yes","--self-contained-html","--html=./report/report.html"])
 """
 
 if __name__=="__main__":
