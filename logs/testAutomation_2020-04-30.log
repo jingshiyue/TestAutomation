@@ -1,0 +1,46 @@
+[2020-04-30 16:43:30,633] INFO [testcase_manage.views:50] queryModulars.POST
+[2020-04-30 16:43:30,651] INFO [testcase_manage.views:52] 机场流程
+[2020-04-30 16:43:31,535] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:31,535] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:31,540] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:31,541] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:33,075] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:33,076] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:33,081] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:33,081] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:33,506] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:33,507] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:33,512] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:33,513] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:35,596] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:35,596] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:35,602] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:35,602] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:36,091] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:36,092] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:36,096] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:36,097] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:36,323] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:36,324] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:36,329] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:36,329] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:36,490] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:36,491] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:36,496] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:36,496] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:36,698] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:36,699] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:36,704] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:36,705] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:37,210] INFO [testcase_manage.views:29] <QueryDict: {'products': ['机场流程'], 'modulars': ['安检'], 'product': ['机场流程'], 'modular': ['安检']}>
+[2020-04-30 16:43:37,211] INFO [testcase_manage.views:33] <QuerySet []>
+[2020-04-30 16:43:37,216] INFO [testcase_manage.views:42] {}
+[2020-04-30 16:43:37,216] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">
+[2020-04-30 16:43:43,202] INFO [testcase_manage.views:50] queryModulars.POST
+[2020-04-30 16:43:43,203] INFO [testcase_manage.views:52] 动态布控
+[2020-04-30 16:43:43,942] INFO [testcase_manage.views:29] <QueryDict: {'products': ['动态布控'], 'modulars': ['数据平台'], 'product': ['动态布控'], 'modular': ['数据平台']}>
+[2020-04-30 16:43:43,943] INFO [testcase_manage.views:33] <QuerySet [<TestCase: 人脸识别记录-列表-条件查询>, <TestCase: 人脸识别记录-详情>]>
+[2020-04-30 16:43:43,981] INFO [testcase_manage.views:36] 6
+[2020-04-30 16:43:43,984] INFO [testcase_manage.views:36] 7
+[2020-04-30 16:43:43,986] INFO [testcase_manage.views:42] {6: {'casename': '人脸识别记录-列表-条件查询', 'api': '/api/v1/face/record/search/list', 'user': 'admin'}, 7: {'casename': '人脸识别记录-详情', 'api': '/api/v1/face/record/search/details', 'user': 'admin'}}
+[2020-04-30 16:43:43,986] INFO [testcase_manage.views:44] <JsonResponse status_code=200, "application/json">

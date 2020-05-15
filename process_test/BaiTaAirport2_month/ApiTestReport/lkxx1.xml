@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Message xmlns="http://schemas.datacontract.org/2004/07/Xasd.FASC.SECM.Entity">
+  <SysID>HET01</SysID>           
+  <searchID />			 
+  <InfoType>lkxxb</InfoType>
+  <Records>
+    <Record>
+      <Status>Add</Status> 
+      <lk_IsInternation>0</lk_IsInternation>   
+      <lk_bdno>001</lk_bdno>     
+      <lk_card>NI</lk_card>      
+      <lk_cardid>040238198312134390</lk_cardid>  
+      <lk_chkn>Z22</lk_chkn>         
+      <lk_chkt>20190308093913</lk_chkt> 
+      <lk_class>Y</lk_class>         
+      <lk_cname>cky</lk_cname>    
+      <lk_date>20190308</lk_date>    
+      <lk_del>0</lk_del>             
+      <lk_dest>TEN</lk_dest>         
+      <lk_ename>HHHH</lk_ename>  
+      <lk_flight>qianzhi40</lk_flight>   
+      <lk_gateno>10</lk_gateno>  
+      <lk_id>fa18ff8a414211e988e9dca266365d7c</lk_id>   
+      <lk_inf> </lk_inf>     
+      <lk_infname /> 
+      <lk_insur>1</lk_insur>    
+      <lk_nation />    
+      <lk_outtime>20190308113913</lk_outtime>  
+      <lk_resr>NTQK8C</lk_resr>  
+      <lk_seat>3B </lk_seat>    
+      <lk_sex>1</lk_sex>        
+      <lk_strt>HET</lk_strt>    
+      <lk_tel>13512134390</lk_tel>   
+      <lk_vip>0</lk_vip>   
+    </Record>
+  </Records>
+</Message>

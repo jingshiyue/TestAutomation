@@ -56,7 +56,7 @@ import re
 import pytest
 """
 
-content = """
+content_danjiekou = """
 class Testcase_%s(object):
     def setup_method(self, method):
         super().__init__()
@@ -143,11 +143,38 @@ class Testcase_%s(object):
         else:
             logger.info("流程测试！！！")
 """
+
+content_liucheng = """
+
+class Testcase_{0}(object):
+    def test_run(self):
+        logger.info("开始测试: {1} ...")
+        import subprocess
+        s=subprocess.Popen(['python', r'process_test\{2}'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
+        try:
+            while True:
+                nextline=s.stdout.readline()
+                logger.info(nextline.strip())
+                if nextline=="" and scan.poll()!=None:
+                    logger.info("测试完成: {1}  ...")
+                    break
+        except:
+            logger.info("测试完成: {1}  ...")  
+
+"""
+
 foot = """
 
 
 if __name__=="__main__":
-    pytest.main(["-vv", "-s", "runCase.py", "--color=yes","--reruns=2","--self-contained-html","--html=./report/report_%s.html"])
+    pytest.main([
+        "runCase.py",
+        "-v","-s","--reruns=1","--color=yes","--self-contained-html","--html=./report/report_{0}.html",
+        "--log-cli-level=INFO",
+        "--log-cli-date-format=%Y-%m-%d %H:%M:%S",
+        "--log-cli-format=[%(asctime)s %(filename)s line:%(lineno)d]%(levelname)s:  %(message)s",
+        # "--setup-show=OFF"
+        ])
 """
 
 if __name__=="__main__":
@@ -159,8 +186,13 @@ if __name__=="__main__":
     f = open("runCase.py","w",encoding='utf-8')
     f.write(head)
     for case in cases:
-        f.write(content %(case.casename.replace("-","_"),case.casename))
+        if case.case_type == "单接口":
+            f.write(content_danjiekou %(case.casename.replace("-","_"),case.casename))
+        if case.case_type == "流程":
+            scripts_path = case.file_path
+            f.write(content_liucheng %(case.casename.replace("-","_"),case.casename,scripts_path))
     f.write(foot % timeStr)
     f.close()
     os.system("runCase.py")
+
     # send_email(product, "hello spring")

@@ -16,7 +16,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'utils/inner'))
-
+sys.path.insert(0, os.path.join(BASE_DIR, 'process_test'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -61,7 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'report'),
+            # os.path.join(BASE_DIR, 'report'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -224,22 +224,14 @@ USE_L10N = True
 
 USE_TZ = False
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     # other
+#     # 'compressor.finders.CompressorFinder',
+# )
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other
-    # 'compressor.finders.CompressorFinder',
-)
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-SCRIPTS_URL = '/testScripts/'
-SCRIPTS_ROOT = os.path.join(BASE_DIR,'testScripts')
-
-REPORT_URL = '/report/'
-REPORT_ROOT = os.path.join(BASE_DIR, 'report')
+STATIC_URL = '/report/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'report')   #用于生产，debug=False
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'report'),)   #用于debug=Ture

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Message xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Xasd.FASC.SECM.Entity">
+  <SysID>HET01</SysID>           <!--安检采集系统编号固定HE01 -->
+  <searchID></searchID>			 <!--无效 -->
+  <InfoType>lkxxb</InfoType>
+  <Records>
+    <Record>
+      <Status>Add</Status> 
+      <lk_IsInternation>2</lk_IsInternation>   <!--是否国际 0否，1是，2未知 -->
+      <lk_bdno>147</lk_bdno>     <!--登机号 10 登机序号 -->
+      <lk_card>NI</lk_card>      <!--证件类型20 -->
+      <lk_cardid>140103196606101555</lk_cardid>  <!--证件号码 -->
+      <lk_chkn>Z22</lk_chkn>         <!--值机柜台8 没有数值可为空 -->
+      <lk_chkt>20140626103700</lk_chkt> <!--值机时间14 YYYYMMDDhhmmss -->
+      <lk_class>Y</lk_class>         <!--舱位等级1 -->
+      <lk_cname>侯锐钢</lk_cname>    <!--旅客中文姓名80 -->
+      <lk_date>20140626</lk_date>    <!--航班日期 8 YYYYMMDD -->
+      <lk_del>0</lk_del>             <!--是否删除 0否  1是 -->
+      <lk_dest>CTU</lk_dest>         <!--目的地 机场三字代表码 -->
+      <lk_ename>HOURUIGANG</lk_ename>  <!--旅客英文姓名80 -->
+      <lk_flight>3U8316</lk_flight>   <!--航班号 12 -->
+      <lk_gateno>104</lk_gateno>  <!--登机口  没有意义 -->
+      <lk_id>2231938</lk_id>   <!--旅客ID 主键 str 36 -->
+      <lk_inf>   </lk_inf>     <!--婴儿标志3 INF带婴儿 “”表示未带婴儿 -->
+      <lk_infname></lk_infname> <!--婴儿姓名 没有数值可为空 -->
+      <lk_insur>0</lk_insur>    <!--是否购保1 -->
+      <lk_nation></lk_nation>    <!--国籍 空-->
+      <lk_outtime>20181026102446</lk_outtime>  <!--起飞时间14 YYYYMMDDhhmmss -->
+      <lk_resr>NTQK8C</lk_resr>  <!--订座号10 值可为空 -->
+      <lk_seat>3B </lk_seat>    <!--座位号 10  3B-->
+      <lk_sex>1</lk_sex>        <!--性别1 男性 2女性 0 未知 1-->
+      <lk_strt>HET</lk_strt>    <!--始发港 4 机场三字代表码 HET-->
+      <lk_tel>13512134390</lk_tel>   <!--联系方式 -->
+      <lk_vip>0</lk_vip>   <!--是否是贵宾1 否：0，是：1，未知：2 -->
+    </Record>
+  </Records>
+</Message>

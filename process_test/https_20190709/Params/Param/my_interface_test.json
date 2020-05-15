@@ -1,0 +1,86 @@
+{
+  "func_name":"test_api_face_security_face_check",
+  "url":"api/v1/face/security/face-check",
+  "data": {
+     "reqId": [
+       "",
+       1
+     ],
+     "gateNo": [
+       "T1AJ1",
+       1
+     ],
+     "deviceId": [
+       "T1AJ001",
+       1
+     ],
+     "cardType": [
+       2,
+       1
+     ],
+     "idCard": [
+       "500382199512303576",
+       1
+     ],
+     "nameZh": [
+       "蒋勇",
+       1
+     ],
+     "nameEn": [
+       "",
+       0
+     ],
+     "age": [
+       null,
+       0
+     ],
+     "sex": [
+       null,
+       0
+     ],
+     "birthDate": [
+       "1976-12-23",
+       1
+     ],
+     "address": [
+       "",
+       0
+     ],
+     "certificateValidity": [
+       "20120222-20220222",
+       1
+     ],
+     "nationality": [
+       "哈巴河县",
+       1
+     ],
+     "ethnic": [
+       "蒙古族",
+       1
+     ],
+     "contactWay": [
+       "STow",
+       1
+     ],
+     "scenePhoto": [
+       "",
+       1
+     ],
+     "sceneFeature": [
+       "",
+       1
+     ],
+     "cardPhoto": [
+       "",
+       1
+     ],
+     "cardFeature": [
+       "",
+       1
+     ],
+     "largePhoto": [
+       "",
+       1
+     ]
+   }
+  }

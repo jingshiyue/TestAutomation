@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//common/common_method.py=utf-8
+encoding//testapi/conftest.py=utf-8
+encoding//testapi/test_y_data_flowback_query.py=utf-8

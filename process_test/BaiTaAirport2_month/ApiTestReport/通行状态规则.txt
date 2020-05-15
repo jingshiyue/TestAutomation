@@ -1,0 +1,22 @@
+{'reqId': 'cd074bc03fd611e9afbcdca266365d7c', 'status': 0, 'msg': 'Success', 'result': [{'reviewInfo': {'photoPath': 'http://192.168.1.105:9091/data-platform-server/api/v1/resource/group1/M00/2F/C7/oYYBAFx_1O-AfzCSAAAMcPcZweE750.jpg', 'passType': 0, 'passTime': '20190306140957', 'passStatus': 0, 'gateNo': 'T1AF1', 'deviceId': 'T1AF001', 'channelName': 'A通道', 'id': '03a3ea312f514210825ed242f1b011de'}, 'userInfo': {'certificateNumber': '001238198312134390', 'passengerName': 'cky', 'passengerEnglishName': 'HHHH', 'flightNo': 'qianzhi1', 'boardingNumber': '001', 'flightDay': '20190306'}, 'boardingInfo': {'photoPath': 'http://192.168.1.105:9091/data-platform-server/api/v1/resource/group1/M00/2F/C7/oYYBAFx_1O-AfzCSAAAMcPcZweE750.jpg', 'passType': 0, 'passTime': '20190306140957', 'passStatus': 0, 'gateNo': 'T1AF1', 'deviceId': 'T1AF001', 'channelName': 'A通道', 'id': '03a3ea312f514210825ed242f1b011de'}, 'securityInfo': {'photoPath': 'http://192.168.1.105:9091/data-platform-server/api/v1/resource/group1/M00/2F/C7/oYYBAFx_1O2AX52ZAAAMcPcZweE408.jpg', 'passType': 0, 'passTime': '20190306140955', 'passStatus': 0, 'gateNo': 'T1AJ1', 'deviceId': 'T1AJ001', 'channelName': 'A通道', 'uuId': '7beea4d3f95146ac842d7b035e67ecf7'}, 'transferInfo': None}]}
+
+
+
+安检的状态(0 人证1:1
+           1 人工放行          0-通过，1-未通过，2-未知，3-身份证过期
+		   2 闸机B门通过
+		   3 验票通过
+		   4-未知)
+复核的类型(0 通道复核
+           1 人工复核-放行     0-通过，1-未通过，2-未知 
+           2 自助闸机
+           3 人工复核-报警
+           4 未知)
+		   
+transferInfo                     具体信息0,中转；1，经停	
+
+boardingInfo具体信息 0通道复核 
+                     1人工放行           0-通过，1-未通过，2-未知
+                     2 人工报警	 
+					 
+		   

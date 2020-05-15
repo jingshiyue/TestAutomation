@@ -24,6 +24,7 @@ class TestCase(BaseModel):
     HTTP_METHODS = (
         ('POST', 'POST'),
         ('GET', 'GET'),
+        ('---', '---'),
     )
     BODY_TYPES = (
         ('json', 'json'),
@@ -44,7 +45,7 @@ class TestCase(BaseModel):
     """
     CASE_TYPE = (
         ("单接口", "单接口"),
-        ("单接口", "流程"),
+        ("流程", "流程"),
     )
 
 
@@ -55,8 +56,8 @@ class TestCase(BaseModel):
     product_name = models.ForeignKey('product_manage.Product', on_delete=models.SET_NULL, null=True,
                                      verbose_name='所属项目') 
     case_type = models.CharField('用例类型',choices=CASE_TYPE,max_length=64,default='单接口')
-    method = models.CharField(max_length=32, verbose_name='请求方式', choices=HTTP_METHODS, default='POST')
-    api = models.CharField('接口路径',max_length=100,help_text='必填: e.g. /api/v1/face/boarding/push-plan')
+    method = models.CharField(max_length=32, verbose_name='请求方式', choices=HTTP_METHODS, default='---')
+    api = models.CharField('接口路径',max_length=100,blank=True,help_text='单接口时必填: e.g. /api/v1/face/boarding/push-plan')
     header = models.TextField('请求头列表', default=DEFAULT_RESPONSE_HEAD,
                             help_text='请求头,格式必须是标准的json格式!')
     certificate = models.TextField('证书',blank=True,help_text='证书字符,选填')

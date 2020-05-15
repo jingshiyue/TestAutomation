@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Message xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Xasd.FASC.SECM.Entity">
+  <SysID>HET01</SysID>   <!--安检采集系统编号 -->
+  <searchID></searchID>
+  <InfoType>ajxxb</InfoType>
+  <Records>
+    <Record>
+      <Status>Add</Status>          <!--0 -->  
+      <ajxxb_id>1138300</ajxxb_id>  <!--1安检信息id 主键35 -->
+      <bag_open>0</bag_open>        <!--2 -->      
+      <lk_id>2577966</lk_id>        <!--3旅客id 35旅客在安检系统主键 -->
+      <safe_flag>1</safe_flag>      <!--4安检状态 0未安检，1：已安检 -->
+      <safe_no>A01</safe_no>        <!--5安检通道号20 -->
+      <safe_oper>PA0100</safe_oper>  <!--6安检验证员60 -->
+      <safe_out>0</safe_out>         <!--7是否出隔离区 0否，1是，2未知 -->
+      <safe_outno></safe_outno>      <!--8出隔离区所用安检20 空 -->
+      <safe_outtime></safe_outtime>  <!--9出隔离区时间14 空 -->
+      <safe_time>20140623091420</safe_time>   <!--10安检时间14 YYYYMMDDhhmmss -->
+    </Record>
+  </Records>
+</Message>

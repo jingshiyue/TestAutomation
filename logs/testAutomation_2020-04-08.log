@@ -1,0 +1,1031 @@
+[2020-04-08 09:35:37,448] INFO [__main__:59] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '\n    "headers":"${get_headers({\'sign\':\'sign\'})}"\n    ', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid({\'name\':1,\'name1\':\'nam1\'})}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 09:36:07,813] INFO [__main__:59] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '\n    "headers":"${get_headers({\'sign\':\'sign\'})}"\n    ', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid({\'name\':1,\'name1\':\'nam1\'})}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 09:49:41,307] INFO [__main__:55] __init__
+[2020-04-08 09:50:40,033] INFO [__main__:55] __init__
+[2020-04-08 09:51:05,851] INFO [__main__:55] __init__
+[2020-04-08 09:51:29,428] INFO [__main__:55] __init__
+[2020-04-08 09:51:29,439] INFO [__main__:82] 单接口测试开始...
+[2020-04-08 09:52:26,770] INFO [__main__:55] __init__
+[2020-04-08 09:52:40,524] INFO [__main__:55] __init__
+[2020-04-08 09:52:40,534] INFO [__main__:83] 单接口测试开始...
+[2020-04-08 10:02:31,506] INFO [__main__:55] __init__
+[2020-04-08 10:02:31,516] INFO [__main__:81] 单接口测试开始...
+[2020-04-08 10:05:57,059] INFO [__main__:55] __init__
+[2020-04-08 10:05:57,069] INFO [__main__:81] 单接口测试开始...
+[2020-04-08 10:09:23,988] INFO [__main__:55] __init__
+[2020-04-08 10:09:23,999] INFO [__main__:81] 单接口测试开始...
+[2020-04-08 10:09:24,005] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:09:24,005] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:09:24,006] INFO [__main__:81] 单接口测试开始...
+[2020-04-08 10:11:15,458] INFO [__main__:55] __init__
+[2020-04-08 10:11:15,468] INFO [__main__:81] 单接口测试开始...
+[2020-04-08 10:11:15,472] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:11:15,473] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:11:15,473] INFO [__main__:121] {'reqId': '39e8f05a793e11eaa4809c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:20:46,053] INFO [__main__:55] __init__
+[2020-04-08 10:20:46,064] INFO [__main__:81] 单接口测试开始...
+[2020-04-08 10:21:39,250] INFO [__main__:55] __init__
+[2020-04-08 10:21:39,259] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:21:39,260] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:27:20,660] INFO [__main__:55] __init__
+[2020-04-08 10:27:20,674] INFO [__main__:64] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:27:20,674] INFO [__main__:65] 人脸识别记录-列表-条件查询
+[2020-04-08 10:27:20,675] INFO [__main__:120] {'reqId': '7936fff4794011eaa1f59c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:27:20,675] INFO [__main__:121] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:29:08,920] INFO [__main__:55] __init__
+[2020-04-08 10:29:55,317] INFO [__main__:55] __init__
+[2020-04-08 10:29:55,331] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:29:55,332] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:29:55,333] INFO [__main__:121] {'reqId': 'd565facc794011eaaebe9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:29:55,333] INFO [__main__:122] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:29:55,333] INFO [__main__:123] POST
+[2020-04-08 10:31:46,094] INFO [__main__:55] __init__
+[2020-04-08 10:31:46,107] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:31:46,108] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:31:46,108] INFO [__main__:119] {'reqId': '176cfd18794111ea941f9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:31:46,108] INFO [__main__:120] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:31:46,109] INFO [__main__:121] POST
+[2020-04-08 10:31:46,109] INFO [__main__:122] None
+[2020-04-08 10:33:00,912] INFO [__main__:55] __init__
+[2020-04-08 10:33:00,924] INFO [__main__:75] generate_header
+[2020-04-08 10:33:00,928] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:33:00,928] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:33:00,929] INFO [__main__:120] {'reqId': '4405c292794111eab65f9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:33:00,930] INFO [__main__:121] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:33:00,930] INFO [__main__:122] POST
+[2020-04-08 10:33:00,930] INFO [__main__:123] None
+[2020-04-08 10:33:40,133] INFO [__main__:55] __init__
+[2020-04-08 10:33:40,143] INFO [__main__:75] generate_header
+[2020-04-08 10:33:40,147] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:33:40,147] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:33:40,148] INFO [__main__:120] {'reqId': '5b6624d4794111ea89de9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:33:40,148] INFO [__main__:121] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:33:40,148] INFO [__main__:122] POST
+[2020-04-08 10:33:40,149] INFO [__main__:123] {'apiId': '123456', 'sign': '5d7ce691c692b5aa52b1b6b20b2d8c46', 'timestamp': '1586313220144'}
+[2020-04-08 10:35:12,897] INFO [__main__:55] __init__
+[2020-04-08 10:35:12,912] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:35:12,913] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:35:12,914] INFO [__main__:116] {'reqId': '92b0e9ca794111ea81719c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:35:12,914] INFO [__main__:117] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:35:12,914] INFO [__main__:118] POST
+[2020-04-08 10:35:12,915] INFO [__main__:119] {'apiId': '123456', 'sign': '8eac9aa78890fb6327287972386f25fc', 'timestamp': '1586313312909'}
+[2020-04-08 10:35:13,660] INFO [__main__:121] <Response [200]>
+[2020-04-08 10:35:57,315] INFO [__main__:55] __init__
+[2020-04-08 10:35:57,333] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 10:35:57,339] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 10:35:57,343] INFO [__main__:116] {'reqId': 'ad2b08a2794111eaa5049c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1}
+[2020-04-08 10:35:57,349] INFO [__main__:117] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 10:35:57,351] INFO [__main__:118] POST
+[2020-04-08 10:35:57,351] INFO [__main__:119] {'apiId': '123456', 'sign': 'c51ce6ac04b1a3fdc12a91a979b9201f', 'timestamp': '1586313357330'}
+[2020-04-08 10:35:57,398] INFO [__main__:121] {"reqId":"ad2b08a2794111eaa5049c305b5da1f9","status":400,"total":1,"msg":"bad params<condition is null>","sysTime":"20200408103603","results":null}
+[2020-04-08 12:37:31,265] INFO [__main__:55] __init__
+[2020-04-08 12:37:56,115] INFO [__main__:55] __init__
+[2020-04-08 12:37:56,130] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":""\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 12:37:56,130] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 12:37:56,131] INFO [__main__:120] {'reqId': 'b782cb98795211eaa1a79c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': ''}
+[2020-04-08 12:37:56,131] INFO [__main__:121] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 12:37:56,132] INFO [__main__:122] POST
+[2020-04-08 12:37:56,132] INFO [__main__:123] {'apiId': '123456', 'sign': 'bf8d6f0fd4711d72d8c32b740dd94325', 'timestamp': '1586320676126'}
+[2020-04-08 12:38:14,448] INFO [__main__:55] __init__
+[2020-04-08 12:38:14,462] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":""\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 12:38:14,462] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 12:38:14,463] INFO [__main__:120] {'reqId': 'c2700058795211eaafaf9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': ''}
+[2020-04-08 12:38:14,463] INFO [__main__:121] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 12:38:14,463] INFO [__main__:122] POST
+[2020-04-08 12:38:14,464] INFO [__main__:123] {'apiId': '123456', 'sign': 'f0dc043cc18587133ff0c632d5eb4282', 'timestamp': '1586320694459'}
+[2020-04-08 12:38:14,595] INFO [__main__:125] {"timestamp":"2020-04-08 12:38:20","status":400,"error":"Bad Request","message":"JSON parse error: Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value (''); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('')\n at [Source: (PushbackInputStream); line: 1, column: 109] (through reference chain: com.cigit.dync.data.entity.RecordListRequestParams[\"condition\"])","path":"/api/v1/face/record/search/list"}
+[2020-04-08 12:40:55,939] INFO [__main__:55] __init__
+[2020-04-08 12:40:55,953] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 12:40:55,953] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 12:40:55,954] INFO [__main__:120] {'reqId': '22b17bdc795311eab6749c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': {'startTime': '', 'endTime': '', 'baseDeviceCode': '', 'baseAreaCode': '', 'codeType': '', 'facePersonSex': '', 'passStatus': '', 'isStranger': '', 'faceName': ''}}
+[2020-04-08 12:40:55,954] INFO [__main__:121] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 12:40:55,954] INFO [__main__:122] POST
+[2020-04-08 12:40:55,955] INFO [__main__:123] {'apiId': '123456', 'sign': '684a23b76109a7fc7185e98f09afc31a', 'timestamp': '1586320855949'}
+[2020-04-08 12:40:56,492] INFO [__main__:125] {"reqId":"22b17bdc795311eab6749c305b5da1f9","status":0,"total":3488,"msg":"SUCCESS","sysTime":"20200408124102","results":[{"id":"60edec13316c42bf8333c590c032dd94","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:40:13","matchingScore":0.9732721,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVa2AD8WjAAAuFFa0MbA402.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"86e7d54ff952460c9d884d9720d3e822","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:39:13","matchingScore":0.97245955,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVXGAF7e8AAAvnnB1oyQ164.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"ec9ddb0c482b4d0d98803c10f29255ad","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:38:12","matchingScore":0.97324944,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVTqAUZB7AAAvfc77Mxw656.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"ff0ed1638e384861b914c11725d9109a","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:37:08","matchingScore":0.9736372,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVPmAEVC0AAAvV88jzPA331.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"d3e51e09676646ba81a62ede598d362e","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:36:07","matchingScore":0.97282684,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVLeAYxU6AAAuviduFPI790.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"e83f0be725b74fa4b2df8c96fd43d162","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:35:06","matchingScore":0.97345495,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVHqAcYssAAAuu7CyDEA578.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"48a84c4d4aa04879b446686c9b113223","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:34:06","matchingScore":0.973004,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVEOAHgcuAAAwMYB6J24889.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"85425908bdb04c07aa909d6595a9d303","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 12:33:06","matchingScore":0.97,"passStatus":null,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVAeALgx1AAAPwVoAUBg727.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVAeALgx1AAAPwVoAUBg727.jpg"},{"id":"a97b1b03d2c54fe19fa922ef9138e84e","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 12:33:02","matchingScore":0.97,"passStatus":null,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NU_6AXEYpAAAKH9bGNpw332.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NU_6AXEYpAAAKH9bGNpw332.jpg"},{"id":"5437d81c1f5e4a52b4b71689f4472279","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 12:32:51","matchingScore":0.9354199,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NU_OAF8MrAAAPi1bBcrU076.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NU_OAF8MrAAAPi1bBcrU076.jpg"}]}
+[2020-04-08 12:45:25,874] INFO [__main__:55] __init__
+[2020-04-08 12:45:25,889] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 12:45:25,890] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 12:45:25,890] INFO [__main__:125] {'reqId': 'c396901a795311ea8e569c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': {'startTime': '', 'endTime': '', 'baseDeviceCode': '', 'baseAreaCode': '', 'codeType': '', 'facePersonSex': '', 'passStatus': '', 'isStranger': '', 'faceName': ''}}
+[2020-04-08 12:45:25,891] INFO [__main__:126] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 12:45:25,891] INFO [__main__:127] POST
+[2020-04-08 12:45:25,891] INFO [__main__:128] {'apiId': '123456', 'sign': 'd1c2e3ccfbb71c86ed35fa3315edc13c', 'timestamp': '1586321125886'}
+[2020-04-08 12:45:53,855] INFO [__main__:55] __init__
+[2020-04-08 12:45:53,870] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 12:45:53,871] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 12:45:53,871] INFO [__main__:125] {'reqId': 'd4442fb4795311eab5aa9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': {'startTime': '', 'endTime': '', 'baseDeviceCode': '', 'baseAreaCode': '', 'codeType': '', 'facePersonSex': '', 'passStatus': '', 'isStranger': '', 'faceName': ''}}
+[2020-04-08 12:45:53,872] INFO [__main__:126] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 12:45:53,872] INFO [__main__:127] POST
+[2020-04-08 12:45:53,872] INFO [__main__:128] {'apiId': '123456', 'sign': '8b8d1f66a502493ac221c8f04b15b661', 'timestamp': '1586321153867'}
+[2020-04-08 12:46:16,011] INFO [__main__:55] __init__
+[2020-04-08 12:46:16,025] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 12:46:16,026] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 12:46:16,026] INFO [__main__:125] {'reqId': 'e178c310795311ea88a39c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': {'startTime': '', 'endTime': '', 'baseDeviceCode': '', 'baseAreaCode': '', 'codeType': '', 'facePersonSex': '', 'passStatus': '', 'isStranger': '', 'faceName': ''}}
+[2020-04-08 12:46:16,027] INFO [__main__:126] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 12:46:16,027] INFO [__main__:127] POST
+[2020-04-08 12:46:16,028] INFO [__main__:128] {'apiId': '123456', 'sign': '697eb2f255ac13ad6cc36fb98dba735a', 'timestamp': '1586321176023'}
+[2020-04-08 12:46:17,025] INFO [__main__:130] {"reqId":"e178c310795311ea88a39c305b5da1f9","status":0,"total":3494,"msg":"SUCCESS","sysTime":"20200408124622","results":[{"id":"1ff403a22fb646e19940650217897a91","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:46:18","matchingScore":0.972347,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVx-AQlL1AAAujBWlYcg416.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"7ec66a10ff9b492186d225ea62b7f5d5","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:45:18","matchingScore":0.97364634,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVuOAceZ_AAAtQb6EcCs909.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"9f5129fb57204698afff54c9ab8241f9","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:44:17","matchingScore":0.97231716,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVqGAXaCnAAAu9XBGKrM167.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"7c60223c717e423da7d0239f3a1a6673","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:43:16","matchingScore":0.9737626,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVmSAW0r3AAAu4I8Raj0716.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"99d3a5db149f44408321437aabe93076","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:42:15","matchingScore":0.97327167,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NViyASkCuAAAwbqPkyo4811.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"99bb03c8001b42999bfdc312b264e579","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:41:14","matchingScore":0.97337997,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVe-ATZrwAAAu3hmyL74482.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"60edec13316c42bf8333c590c032dd94","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:40:13","matchingScore":0.9732721,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVa2AD8WjAAAuFFa0MbA402.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"86e7d54ff952460c9d884d9720d3e822","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:39:13","matchingScore":0.97245955,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NVXGAF7e8AAAvnnB1oyQ164.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"ec9ddb0c482b4d0d98803c10f29255ad","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:38:12","matchingScore":0.97324944,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVTqAUZB7AAAvfc77Mxw656.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"ff0ed1638e384861b914c11725d9109a","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:37:08","matchingScore":0.9736372,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NVPmAEVC0AAAvV88jzPA331.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"}]}
+[2020-04-08 13:01:24,501] INFO [__main__:55] __init__
+[2020-04-08 13:01:30,294] INFO [__main__:55] __init__
+[2020-04-08 13:02:12,162] INFO [__main__:55] __init__
+[2020-04-08 13:02:12,178] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 13:02:12,178] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 13:02:12,179] INFO [__main__:125] {'reqId': '1b61e5d4795611ea86469c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': {'startTime': '', 'endTime': '', 'baseDeviceCode': '', 'baseAreaCode': '', 'codeType': '', 'facePersonSex': '', 'passStatus': '', 'isStranger': '', 'faceName': ''}}
+[2020-04-08 13:02:12,179] INFO [__main__:126] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 13:02:12,180] INFO [__main__:127] POST
+[2020-04-08 13:02:12,181] INFO [__main__:128] {'apiId': '123456', 'sign': '0e92bf2eb7de0ddd6877bec47388b1fd', 'timestamp': '1586322132173'}
+[2020-04-08 13:02:13,245] INFO [__main__:130] {"reqId":"1b61e5d4795611ea86469c305b5da1f9","status":0,"total":3513,"msg":"SUCCESS","sysTime":"20200408130219","results":[{"id":"04a032a27b63448185b66f018efb97dc","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 13:01:27","matchingScore":0.89643747,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NWqyAMLw4AAALShHKiKs720.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NWqyAMLw4AAALShHKiKs720.jpg"},{"id":"a113e75a72814fdebd164db35c59756c","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 13:01:23","matchingScore":0.91337276,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWqOAN7f1AAAJNT3wlgQ568.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWqOAN7f1AAAJNT3wlgQ568.jpg"},{"id":"299e64228c054646bc86d02a5221f6cd","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:01:19","matchingScore":0.97364557,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWp6AUY75AAAuNjTY9ko102.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"847a82e195e945569b51a1bba3c71256","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:00:18","matchingScore":0.9726776,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NWmeAFawNAAAtjDMcCv0845.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"d5855ba505d24d1284d9b4d06dad54ea","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:59:17","matchingScore":0.9714183,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NWiuATogEAAAvQvDZZTw092.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"28d853a7e275459c93368019db84c0b6","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:58:17","matchingScore":0.9724956,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWemAKdYPAAAvzgAp8J8003.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"40faa9f67aba44bda8c34f9eacb2c591","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:57:16","matchingScore":0.97313684,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWayAHtiHAAAwwJ7IRI8846.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"62b06e2511604bbea97f2ee21f12c3c9","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:56:15","matchingScore":0.9731607,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NWXSAYhQMAAAuPkfgjbM462.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"cfb08b97af1d4c6fab3651eb68fafcac","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:55:15","matchingScore":0.9740128,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NWTiAPX95AAAuwkah4UQ101.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"fa44a98ec9f8436190347ba06d13acf8","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 12:54:13","matchingScore":0.91274625,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWPWAGLWXAAAKJX-oH5I334.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWPWAGLWXAAAKJX-oH5I334.jpg"}]}
+[2020-04-08 13:02:13,897] INFO [startRun:55] __init__
+[2020-04-08 13:02:13,909] INFO [startRun:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 13:02:13,910] INFO [startRun:66] 人脸识别记录-列表-条件查询
+[2020-04-08 13:02:13,911] INFO [startRun:125] {'reqId': '1c6a1d7e795611eaa57e9c305b5da1f9', 'pageSize': 10, 'pageIndex': 1, 'isStranger': 1, 'condition': {'startTime': '', 'endTime': '', 'baseDeviceCode': '', 'baseAreaCode': '', 'codeType': '', 'facePersonSex': '', 'passStatus': '', 'isStranger': '', 'faceName': ''}}
+[2020-04-08 13:02:13,912] INFO [startRun:126] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 13:02:13,912] INFO [startRun:127] POST
+[2020-04-08 13:02:13,913] INFO [startRun:128] {'apiId': '123456', 'sign': '5e757b62f3ed059be58b765b105ba29c', 'timestamp': '1586322133909'}
+[2020-04-08 13:02:13,971] INFO [startRun:130] {"reqId":"1c6a1d7e795611eaa57e9c305b5da1f9","status":0,"total":3513,"msg":"SUCCESS","sysTime":"20200408130219","results":[{"id":"04a032a27b63448185b66f018efb97dc","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 13:01:27","matchingScore":0.89643747,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NWqyAMLw4AAALShHKiKs720.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NWqyAMLw4AAALShHKiKs720.jpg"},{"id":"a113e75a72814fdebd164db35c59756c","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 13:01:23","matchingScore":0.91337276,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWqOAN7f1AAAJNT3wlgQ568.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWqOAN7f1AAAJNT3wlgQ568.jpg"},{"id":"299e64228c054646bc86d02a5221f6cd","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:01:19","matchingScore":0.97364557,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWp6AUY75AAAuNjTY9ko102.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"847a82e195e945569b51a1bba3c71256","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:00:18","matchingScore":0.9726776,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NWmeAFawNAAAtjDMcCv0845.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"d5855ba505d24d1284d9b4d06dad54ea","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:59:17","matchingScore":0.9714183,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NWiuATogEAAAvQvDZZTw092.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"28d853a7e275459c93368019db84c0b6","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:58:17","matchingScore":0.9724956,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWemAKdYPAAAvzgAp8J8003.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"40faa9f67aba44bda8c34f9eacb2c591","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:57:16","matchingScore":0.97313684,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWayAHtiHAAAwwJ7IRI8846.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"62b06e2511604bbea97f2ee21f12c3c9","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:56:15","matchingScore":0.9731607,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NWXSAYhQMAAAuPkfgjbM462.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"cfb08b97af1d4c6fab3651eb68fafcac","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 12:55:15","matchingScore":0.9740128,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A0/ooYBAF6NWTiAPX95AAAuwkah4UQ101.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"fa44a98ec9f8436190347ba06d13acf8","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 12:54:13","matchingScore":0.91274625,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWPWAGLWXAAAKJX-oH5I334.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NWPWAGLWXAAAKJX-oH5I334.jpg"}]}
+[2020-04-08 13:54:50,197] INFO [__main__:55] __init__
+[2020-04-08 13:54:50,205] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 13:54:50,206] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 13:54:50,206] INFO [__main__:109] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 13:54:50,207] INFO [__main__:110] http://172.18.2.128:9091/face-bussiness-server/api/v1/face/record/search/list
+[2020-04-08 13:54:51,008] INFO [__main__:117] {"reqId":"75b6ca18795d11ea99e59c305b5da1f9","status":0,"total":3568,"msg":"SUCCESS","sysTime":"20200408135456","results":[{"id":"e0737f85d7e643d39d1d5efdd880d0d6","baseDeviceCode":"L8","areaName":"22","swipeTime":"2020-04-08 13:54:36","matchingScore":0.9007669,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZxyAG2F-AAATWoLs0qw160.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZxyAG2F-AAATWoLs0qw160.jpg"},{"id":"29a78bd95bc54ee990389296b3959501","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:53:53","matchingScore":0.97230047,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZvGAZWpVAAAuHDPTK5k626.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"54a1cf89b23641fc92bd274f06d4e117","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:52:52","matchingScore":0.97241706,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NZrqALXFuAAAu1VlBh7M282.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"bb96b18e90234cff84c521fdaa49394b","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:51:52","matchingScore":0.92280495,"passStatus":1,"isStranger":1,"faceName":null,"facePersonSex":0,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NZn2ARMVNAACSX49GWao064.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NZn2ARMVNAACSX49GWao064.jpg"},{"id":"63aa4a77eab44338bcd696e963d5a5a1","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:51:17","matchingScore":0.97156906,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZlWAdIeAAAAv578Tmlg418.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"c837079153b144eba41c7d19159766e9","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:50:17","matchingScore":0.97278523,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZhmACwxTAAAwJ6fxemA783.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"fb31502bab3747dab3b0ddf37ef8ff6e","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:49:17","matchingScore":0.9721367,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NZeKARatnAAAui5y_6M8970.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"14cc92a04c434e8880e59ffa9038546b","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:48:16","matchingScore":0.97215444,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/A1/ooYBAF6NZaWAS-gLAAAwMzGkV4U199.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"8dc09a4e39d44920bca883b5281b2743","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:47:12","matchingScore":0.97284216,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZWCAZrdOAAAvzZ-Bx-g179.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"},{"id":"dae4e35bdd874fb8ab1ce7e1b54c7d58","baseDeviceCode":"L4","areaName":"22","swipeTime":"2020-04-08 13:46:12","matchingScore":0.97092485,"passStatus":1,"isStranger":0,"faceName":"ceshi","facePersonSex":1,"livePhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/D2/oYYBAF6NZSSAbQI8AAAuDWoYp2o431.jpg","registPhotoPath":"http://172.18.2.128:9091/data-platform-server/api/v1/resource/group1/M00/02/24/oYYBAF58UMqAP3pwAAOFulTn9R4722.jpg"}]}
+[2020-04-08 14:03:35,139] INFO [__main__:55] __init__
+[2020-04-08 14:03:35,149] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 14:03:35,149] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 14:03:35,756] INFO [startRun:55] __init__
+[2020-04-08 14:03:35,761] INFO [startRun:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 14:03:35,762] INFO [startRun:66] 人脸识别记录-列表-条件查询
+[2020-04-08 14:04:55,993] INFO [__main__:55] __init__
+[2020-04-08 14:04:56,001] INFO [__main__:65] {'user': 1, 'id': 6, 'casename': '人脸识别记录-列表-条件查询', 'modular_name': 4, 'product_name': 3, 'case_type': '单接口', 'method': 'POST', 'url': '/api/v1/face/record/search/list', 'header': '"headers":"${get_headers({\'sign\':\'sign\'})}"', 'certificate': '', 'body_type': 'json', 'body': '{\r\n\t"reqId":"${get_uuid()}",\r\n\t"pageSize":10,\r\n\t"pageIndex":1,\r\n\t"isStranger":1,\r\n        "condition":{\r\n            "startTime": "",\r\n            "endTime": "",\r\n            "baseDeviceCode": "",\r\n            "baseAreaCode": "",\r\n            "codeType": "",\r\n            "facePersonSex": "",\r\n            "passStatus": "",\r\n            "isStranger": "",\r\n            "faceName": ""\r\n        }\r\n}', 'file_path': '', 'check_list': '{"status":0,"msg":"Success"}', 'desc': '第一个正式的单接口测试', 'level': '重要', 'skip': False}
+[2020-04-08 14:04:56,002] INFO [__main__:66] 人脸识别记录-列表-条件查询
+[2020-04-08 17:07:52,102] INFO [__main__:21] import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+# from testcase_manage.utils.dictUitl import dict_in
+# from testcase_manage.utils.getTestData import get_test_data
+
+# logging.basicConfig(level=logging.DEBUG)
+# log = logging.getLogger()
+# data = get_test_data()
+
+# @pytest.mark.parametrize(*data)
+# def test_api(case_info):
+#     log.info(case_info)
+#     input_data = case_info.get("input")
+#     log.info("测试用例输入数据为：{}".format(input_data))
+#     output_data = case_info.get("output")
+#     log.info("测试用例期望输出数据为：{}".format(output_data))
+#     url = input_data.get("url")
+#     log.info("请求发送的地址:{}".format(url))
+#     method = input_data.get("method")
+#     log.info("请求发送的方法:{}".format(method))
+#     role = input_data.get("role")
+#     log.info("token:{}".format(role))
+#     json_data = input_data.get("json_data")
+#     log.info("请求发送的json为:{}".format(json_data))
+#     res = requests.request(method, url, json=json_data)
+#     actual_json = res.json()
+#     log.info("响应体json转换后的信息为：{}".format(actual_json))
+
+#     assert res.status_code in output_data.get("status_code")
+#     expect_list = output_data.get("expect_body")
+#     # [{'message': 'OK'}, {'data': {'phone': '18780373592', 'realname': '完美'}}]
+#     for expect_json in expect_list:
+#         log.info("正在断言响应体数据 {} ".format(expect_json))
+#         assert dict_in(expect_json, actual_json)
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+
+class Testcase(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+
+
+if __name__=="__main__":
+    cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+    casesList = []
+    for case in cases:
+        casesList.append(Testcase(case))
+        pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:08:04,632] INFO [__main__:21] import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+# from testcase_manage.utils.dictUitl import dict_in
+# from testcase_manage.utils.getTestData import get_test_data
+
+# logging.basicConfig(level=logging.DEBUG)
+# log = logging.getLogger()
+# data = get_test_data()
+
+# @pytest.mark.parametrize(*data)
+# def test_api(case_info):
+#     log.info(case_info)
+#     input_data = case_info.get("input")
+#     log.info("测试用例输入数据为：{}".format(input_data))
+#     output_data = case_info.get("output")
+#     log.info("测试用例期望输出数据为：{}".format(output_data))
+#     url = input_data.get("url")
+#     log.info("请求发送的地址:{}".format(url))
+#     method = input_data.get("method")
+#     log.info("请求发送的方法:{}".format(method))
+#     role = input_data.get("role")
+#     log.info("token:{}".format(role))
+#     json_data = input_data.get("json_data")
+#     log.info("请求发送的json为:{}".format(json_data))
+#     res = requests.request(method, url, json=json_data)
+#     actual_json = res.json()
+#     log.info("响应体json转换后的信息为：{}".format(actual_json))
+
+#     assert res.status_code in output_data.get("status_code")
+#     expect_list = output_data.get("expect_body")
+#     # [{'message': 'OK'}, {'data': {'phone': '18780373592', 'realname': '完美'}}]
+#     for expect_json in expect_list:
+#         log.info("正在断言响应体数据 {} ".format(expect_json))
+#         assert dict_in(expect_json, actual_json)
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+
+class Testcase(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+
+
+if __name__=="__main__":
+    cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+    casesList = []
+    for case in cases:
+        casesList.append(Testcase(case))
+        pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:24:57,829] INFO [__main__:26] import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+# from testcase_manage.utils.dictUitl import dict_in
+# from testcase_manage.utils.getTestData import get_test_data
+
+# logging.basicConfig(level=logging.DEBUG)
+# log = logging.getLogger()
+# data = get_test_data()
+
+# @pytest.mark.parametrize(*data)
+# def test_api(case_info):
+#     log.info(case_info)
+#     input_data = case_info.get("input")
+#     log.info("测试用例输入数据为：{}".format(input_data))
+#     output_data = case_info.get("output")
+#     log.info("测试用例期望输出数据为：{}".format(output_data))
+#     url = input_data.get("url")
+#     log.info("请求发送的地址:{}".format(url))
+#     method = input_data.get("method")
+#     log.info("请求发送的方法:{}".format(method))
+#     role = input_data.get("role")
+#     log.info("token:{}".format(role))
+#     json_data = input_data.get("json_data")
+#     log.info("请求发送的json为:{}".format(json_data))
+#     res = requests.request(method, url, json=json_data)
+#     actual_json = res.json()
+#     log.info("响应体json转换后的信息为：{}".format(actual_json))
+
+#     assert res.status_code in output_data.get("status_code")
+#     expect_list = output_data.get("expect_body")
+#     # [{'message': 'OK'}, {'data': {'phone': '18780373592', 'realname': '完美'}}]
+#     for expect_json in expect_list:
+#         log.info("正在断言响应体数据 {} ".format(expect_json))
+#         assert dict_in(expect_json, actual_json)
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+
+class Testcase(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+
+
+if __name__=="__main__":
+    cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+    casesList = []
+    for case in cases:
+        casesList.append(Testcase(case))
+        pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:26:13,074] INFO [__main__:26] import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+# from testcase_manage.utils.dictUitl import dict_in
+# from testcase_manage.utils.getTestData import get_test_data
+
+# logging.basicConfig(level=logging.DEBUG)
+# log = logging.getLogger()
+# data = get_test_data()
+
+# @pytest.mark.parametrize(*data)
+# def test_api(case_info):
+#     log.info(case_info)
+#     input_data = case_info.get("input")
+#     log.info("测试用例输入数据为：{}".format(input_data))
+#     output_data = case_info.get("output")
+#     log.info("测试用例期望输出数据为：{}".format(output_data))
+#     url = input_data.get("url")
+#     log.info("请求发送的地址:{}".format(url))
+#     method = input_data.get("method")
+#     log.info("请求发送的方法:{}".format(method))
+#     role = input_data.get("role")
+#     log.info("token:{}".format(role))
+#     json_data = input_data.get("json_data")
+#     log.info("请求发送的json为:{}".format(json_data))
+#     res = requests.request(method, url, json=json_data)
+#     actual_json = res.json()
+#     log.info("响应体json转换后的信息为：{}".format(actual_json))
+
+#     assert res.status_code in output_data.get("status_code")
+#     expect_list = output_data.get("expect_body")
+#     # [{'message': 'OK'}, {'data': {'phone': '18780373592', 'realname': '完美'}}]
+#     for expect_json in expect_list:
+#         log.info("正在断言响应体数据 {} ".format(expect_json))
+#         assert dict_in(expect_json, actual_json)
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+
+class Testcase(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+
+
+if __name__=="__main__":
+    cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+    casesList = []
+    for case in cases:
+        casesList.append(Testcase(case))
+        pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:27:43,655] INFO [__main__:26] import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+# from testcase_manage.utils.dictUitl import dict_in
+# from testcase_manage.utils.getTestData import get_test_data
+
+# logging.basicConfig(level=logging.DEBUG)
+# log = logging.getLogger()
+# data = get_test_data()
+
+# @pytest.mark.parametrize(*data)
+# def test_api(case_info):
+#     log.info(case_info)
+#     input_data = case_info.get("input")
+#     log.info("测试用例输入数据为：{}".format(input_data))
+#     output_data = case_info.get("output")
+#     log.info("测试用例期望输出数据为：{}".format(output_data))
+#     url = input_data.get("url")
+#     log.info("请求发送的地址:{}".format(url))
+#     method = input_data.get("method")
+#     log.info("请求发送的方法:{}".format(method))
+#     role = input_data.get("role")
+#     log.info("token:{}".format(role))
+#     json_data = input_data.get("json_data")
+#     log.info("请求发送的json为:{}".format(json_data))
+#     res = requests.request(method, url, json=json_data)
+#     actual_json = res.json()
+#     log.info("响应体json转换后的信息为：{}".format(actual_json))
+
+#     assert res.status_code in output_data.get("status_code")
+#     expect_list = output_data.get("expect_body")
+#     # [{'message': 'OK'}, {'data': {'phone': '18780373592', 'realname': '完美'}}]
+#     for expect_json in expect_list:
+#         log.info("正在断言响应体数据 {} ".format(expect_json))
+#         assert dict_in(expect_json, actual_json)
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+
+class Testcase(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+
+
+if __name__=="__main__":
+    cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+    casesList = []
+    for case in cases:
+        casesList.append(Testcase(case))
+        pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:35:35,460] INFO [__main__:26] """
+import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+class Testcase_%s(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+"""
+
+# if __name__=="__main__":
+#     cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+#     casesList = []
+#     for case in cases:
+#         casesList.append(Testcase(case))
+#         pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:35:50,849] INFO [__main__:26] """
+import os,django,sys
+from utils.inner import *
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
+django.setup()
+from django.conf import settings
+import logging
+logger = logging.getLogger(__name__)
+import pytest
+import requests
+import traceback
+from product_manage.models import Product,Notifier,Modular
+from testcase_manage.models import TestCase
+from django.forms.models import model_to_dict
+import time
+import json
+import re
+import pytest
+
+class Testcase_%s(object):
+    def __init__(self,casename,certificate=None):
+        super().__init__()
+        self.pattern = re.compile(r'^\${(.+(\(.*\)))}', re.I)
+        self.certificate = certificate
+        self.obj = TestCase.objects.all().get(casename=casename)
+        self.caseDict = model_to_dict(self.obj)
+        self.url = self.generate_url()
+        self.method = self.caseDict.get("method")
+        self.header = self.generate_header()
+        self.body = self.generate_body()
+        logger.info(self.caseDict)
+        logger.info(self.obj)
+
+
+    def generate_url(self):
+        host = self.obj.modular_name.host
+        api = self.caseDict.get('url')
+        return host + api
+
+    def generate_header(self):
+        return get_headers(self.caseDict.get('url'))
+        
+    def generate_body(self):
+        # if '单接口' in self.caseDict.get('case_type'):
+        #     logger.info('单接口测试开始...')
+        #     if 'GET' in self.caseDict.get('method'):
+        #         logger.info('GET 请求，功能暂时没开放！')
+        #     if 'POST' in self.caseDict.get('method'):
+        #         logger.info(type(_body))
+                ### 请求参数处理
+                # logger.info(_body)
+        if self.caseDict.get("body",None):
+            _body = json.loads(self.obj.body)
+            for k,v in _body.items():
+                try:
+                    rst = self.pattern.match(v)  #v 为字符串类型时，才可以匹配，为整型时不可匹配
+                except:
+                    rst = None
+                if rst:  #处理匹配到的 "${get_uuid({'name':1,'name1':'nam1'})}"
+                    fun_name = rst.group(1)[:rst.group(1).find('(')]
+                    parmsStr = rst.group(2).strip('(').strip(')') #string {"name":1,"name1":"nam1"}
+                    if parmsStr:
+                        parmsStr = parmsStr.replace("'","\"")
+                        parmsDict = json.loads(parmsStr)
+                        v = globals().get(fun_name)(parmsDict)
+                    else:
+                        v = globals().get(fun_name)()
+                        _body[k] = v
+            return _body
+        return None
+
+    def test_run(self):
+        if self.caseDict.get("case_type") == '单接口':
+            if self.method == 'POST':
+                logger.info(self.url)
+                logger.info(self.url)
+                res = requests.post(url=self.url,
+                                    headers=self.header,
+                                    json=self.body,
+                                    verify=self.certificate
+                                    )
+                res.close()
+                logger.info(res.text)
+                return res.text
+            if self.method == 'GET':
+                logger.info("GET 单接口暂没有！")
+                return None
+        else:
+            logger.info("流程测试！！！")
+"""
+
+# if __name__=="__main__":
+#     cases = TestCase.objects.all().filter(casename='人脸识别记录-列表-条件查询')
+#     casesList = []
+#     for case in cases:
+#         casesList.append(Testcase(case))
+#         pytest.main(["-vv", "-s", "startRun.py", "--color=no", "--alluredir=./report/xml"])
+
+[2020-04-08 17:35:50,859] INFO [__main__:32] 人脸识别记录-列表-条件查询
+[2020-04-08 17:37:35,775] INFO [__main__:34] 人脸识别记录-列表-条件查询
+[2020-04-08 17:37:35,776] INFO [__main__:35] <class 'str'>
+[2020-04-08 17:38:52,042] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:38:52,043] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:40:26,310] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:40:26,310] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:44:26,970] INFO [__main__:33] api_first
+[2020-04-08 17:44:26,970] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:49:49,542] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:49:49,543] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:51:16,153] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:51:16,153] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:51:34,507] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:51:34,508] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:56:10,815] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:56:10,815] INFO [__main__:34] <class 'str'>
+[2020-04-08 17:57:53,130] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 17:57:53,131] INFO [__main__:34] <class 'str'>
+[2020-04-08 18:00:08,569] INFO [__main__:33] 人脸识别记录-列表-条件查询
+[2020-04-08 18:00:08,569] INFO [__main__:34] <class 'str'>

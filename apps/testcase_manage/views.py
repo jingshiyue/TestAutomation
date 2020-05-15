@@ -70,18 +70,22 @@ def generateCaseInfo(request):
         ids = [int(x) for x in request.POST.getlist('caseNum')]
         import time,os
         timeStr = time.strftime('%Y%m%d%H%M%S',time.localtime())
-        from startRun import head,foot,content
+        from startRun import head,foot,content_danjiekou,content_liucheng
         f = open("runCase.py","w",encoding='utf-8')
         f.write(head)
         for id in ids:
             case = TestCase.objects.all().get(id=id)
-            f.write(content %(case.casename.replace("-","_"),case.casename))
-        f.write(foot % timeStr)
+            if case.case_type == "单接口":
+                f.write(content_danjiekou %(case.casename.replace("-","_"),case.casename))
+            if case.case_type == "流程":
+                scripts_path = case.file_path
+                f.write(content_liucheng.format(case.casename.replace("-","_"),case.casename,scripts_path))
+        f.write(foot.format(timeStr))
         f.close()
-        os.system("runCase.py")
-        content = """<h3>generate config sucessfully...</h3>
-                     <p>{0} 条用例测试完成...</p>
+        os.system("start runCase.py")
+        content = """<h3>后台正在测试，测试完毕后会收到邮件提醒...</h3>
+                     <p>当前测试用例条数: {0} </p>
                      <p>测试报告路径:<a href="{1}">{1}</a></p>
-                     """.format(len(ids),"http://192.168.1.42:8000/report/report_"+timeStr+".html")
+                     """.format(len(ids),r"http://192.168.1.42:8000/report/report_"+timeStr+".html")
         send_email("动态布控",timeStr)
         return HttpResponse(content)
