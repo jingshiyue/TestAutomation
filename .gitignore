@@ -7,6 +7,6 @@
 **/.idea/
 db.sqlite3
 /report/
-/**/migrations/
 /logs/
 **/test_photoes/
+**/.pytest_cache/
