@@ -190,20 +190,25 @@ class Testcase_人脸识别记录_详情(object):
             logger.info("流程测试！！！")
 
 
-class Testcase_第一个机场流程测试(object):
+class Testcase_系统安检通过_系统复核通过_系统登机口复核通过(object):
     def test_run(self):
-        logger.info("开始测试: 第一个机场流程测试 ...")
+        '''
+        【系统安检】:A门传入身份证+证件照，B门传入身份证+现场照A、现场照特征A+证件照、证件照特征
+【系统复核】:传入现场照B、现场特征B
+【系统登机口复核】:传入[身份证号]+机票
+        '''
+        logger.info("开始测试 ...")
         import subprocess
-        s=subprocess.Popen(['python', r'process_test\https_20190709\test_case\test_process.py'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
+        s=subprocess.Popen(['python', r'process_test\https_20190709\test_case\test_process_01.py'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
         try:
             while True:
                 nextline=s.stdout.readline()
                 logger.info(nextline.strip())
                 if nextline=="" and scan.poll()!=None:
-                    logger.info("测试完成: 第一个机场流程测试  ...")
+                    logger.info("测试完成  ...")
                     break
         except:
-            logger.info("测试完成: 第一个机场流程测试  ...")  
+            logger.info("测试完成  ...")  
 
 
 
@@ -211,9 +216,5 @@ class Testcase_第一个机场流程测试(object):
 if __name__=="__main__":
     pytest.main([
         "runCase.py",
-        "-v","-s","--reruns=1","--color=yes","--self-contained-html","--html=./report/report_20200515180200.html",
-        "--log-cli-level=INFO",
-        "--log-cli-date-format=%Y-%m-%d %H:%M:%S",
-        "--log-cli-format=[%(asctime)s %(filename)s line:%(lineno)d]%(levelname)s:  %(message)s",
-        # "--setup-show=OFF"
+        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200520104557.html",
         ])

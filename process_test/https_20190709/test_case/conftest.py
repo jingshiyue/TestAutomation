@@ -5,8 +5,37 @@ import pytest,sys,pymysql,random
 from https_20190709.common.common_method import *
 from BaiTaAirport2_month.common import Idcardnumber
 from BaiTaAirport2_month.msgQueue import Autosendlk
-import logging
-#log surpport
+import logging,time
+logger = logging.getLogger(__name__)
+
+from datetime import datetime
+import pytest
+from py._xmlgen import html
+
+@pytest.mark.optionalhook
+def pytest_html_results_table_header(cells):
+    cells.insert(2, html.th('Description'))
+    cells.insert(3, html.th('Time', class_='sortable time', col='time'))
+    # cells.insert(1,html.th("Test_nodeid"))
+    cells.pop()
+
+@pytest.mark.optionalhook
+def pytest_html_results_table_row(report, cells):
+    cells.insert(2, html.td(report.description))
+    cells.insert(3, html.td(datetime.utcnow(), class_='col-time'))
+    # cells.insert(1,html.td(report.nodeid))
+    cells.pop()
+
+@pytest.mark.hookwrapper
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+    report.description = str(item.function.__doc__)
+    report.nodeid = report.nodeid.encode("utf-8").decode("unicode_escape")   #设置编码显示中文
+
+
+
+###################################################################################
 
 @pytest.fixture()
 def struct_pho():
@@ -35,15 +64,15 @@ def struct_pho():
     pho_dic["cardFeature"] = cardFeature
     pho_dic["sceneFeature"] = sceneFeature
     pho_dic["sceneFeature_2k"] = sceneFeature_2k
-    logging.info("cardPhoto: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic-1) )
-    logging.info(r"scenePhoto: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic))
-    logging.info("scenePhoto_fuhe: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic+1))
+    logger.info("cardPhoto: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic-1) )
+    logger.info(r"scenePhoto: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic))
+    logger.info("scenePhoto_fuhe: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic+1))
     return pho_dic
 
 
 @pytest.fixture()  #安检系统表里创建数据
 def insert_data_into_mysql(request):
-    logging.info("insert_data_into_mysql")
+    logger.info("insert_data_into_mysql")
     ########database config##
     host = "172.18.2.199"
     port = "3306"
@@ -63,7 +92,7 @@ def insert_data_into_mysql(request):
                                          charset=charset,
                                          cursorclass=pymysql.cursors.DictCursor)
     except pymysql.err.OperationalError as e:
-        logging.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
+        logger.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
     bdno = str(random.randint(1, 999))
     date = produce_flight_date()
     flight_no = produce_flight_number()
@@ -78,10 +107,10 @@ def insert_data_into_mysql(request):
         try:
             cursor.execute(sql)
             connection.commit()
-            logging.info("表:sec_passenger_entity 插入数据成功")
+            logger.info("表:sec_passenger_entity 插入数据成功")
         except:
             connection.rollback()
-            logging.error("表:sec_passenger_entity 插入数据失败...")
+            logger.error("表:sec_passenger_entity 插入数据失败...")
             exit()
     return bdno,date,flight_no
 
@@ -92,7 +121,7 @@ def creat_zhiji_random(request):
     在值机前先往表里（sec_passenger_entity）加入数据
     产生随机的值机人信息（起飞时间不管，主要是航班号，序号，身份证号码），信息在lkxx1.xml里
     """
-    logging.info("creat_zhiji_random.............")
+    logger.info("creat_zhiji_random.............")
     import string
     # slcLetter = random.choice(string.ascii_uppercase)
     zhiji_dic = {}
@@ -175,7 +204,7 @@ def creat_zhiji_byFlight(request):
     在值机前先往表里（sec_passenger_entity）加入数据
     产生随机的值机人信息（起飞时间不管，主要是航班号，序号，身份证号码），信息在lkxx1.xml里
     """
-    from .test_process import dataInfo   #{'flight_no': 'DR6562', 'bdno': '02', 'date': '2020-05-09'}
+    from process_test.https_20190709.test_case.data import flightInfo
     import string
     # slcLetter = random.choice(string.ascii_uppercase)
     zhiji_dic = {}
@@ -186,12 +215,12 @@ def creat_zhiji_byFlight(request):
     lk_date = produce_flight_date()
     lk_bdno  = str(random.randint(1,999))
     lk_seat = lk_bdno + "A"   #座位号
-    lk_flight = dataInfo["flight_no"]
+    lk_flight = flightInfo["flight_no"]
     lk_id = str(random.randint(1, 999))
     lk_inf = ""
     lk_cname = "大西瓜7"
     lk_ename = "DAXIGUA7"
-    lk_gateno = dataInfo["bdno"]  #需要指定登机口
+    lk_gateno = flightInfo["bdno"]  #需要指定登机口
     lk_desk = "CTU"
     if "lk_outtime" in request.param:
         lk_outtime = request.param["lk_outtime"]
@@ -246,11 +275,9 @@ def creat_zhiji_byFlight(request):
 
 def creat_zhiji_byFlight_useInFunc(**request):
     """
-    在值机前先往表里（sec_passenger_entity）加入数据
     产生随机的值机人信息（起飞时间不管，主要是航班号，序号，身份证号码），信息在lkxx1.xml里
-    没有@pytest.fixture()，仅做函数调用使用
+    可接收航班信息
     """
-    from .test_process import dataInfo   #{'flight_no': 'DR6562', 'bdno': '02', 'date': '2020-05-09'}
     import string
     # slcLetter = random.choice(string.ascii_uppercase)
     zhiji_dic = {}
@@ -324,3 +351,36 @@ def creat_zhiji_byFlight_useInFunc(**request):
     zhiji_dic["lk_bdno"] = lk_bdno  #登机序号
     time.sleep(1)
     return zhiji_dic
+
+def get_useful_flight(gateNoList:list):
+    """
+    return 从172.18.2.199 redis中获取可用测试的航班
+    parm:gateNoList 登机口列表 如["02","02A","03","03A",]
+    """
+    import redis
+    from process_test.https_20190709.test_case.data import config
+    try:
+        sr=redis.StrictRedis(host=config.get("config","redis"), port=6379, db=2,password='cigit')
+    except Exception as e:
+        print(e)
+
+    import time
+    flightTemp = "plan-" + time.strftime("%Y-%m-%d",time.localtime()) #plan-2020-05-08
+    for gate in gateNoList:
+        flightNum = flightTemp + "-" + gate  #plan-2020-05-08-02
+        zsetRes = sr.zrange(flightNum,0,-1,withscores=True)   #当天每个登机口里的航班
+        for flight in zsetRes:
+            try:
+                detailFlight = "status-" + time.strftime("%Y-%m-%d",time.localtime()) + "-" + str(flight[0][:6])[2:-1]  #status-2020-05-08-3U8747
+                hRes = sr.hmget(detailFlight, "flightDate","depTimeJ","twoFlightNo","gateNo","status")  #航班详细信息
+                depTimeJ = str(hRes[0])[2:-1] + " " + str(hRes[1])[2:-1]   #redis中预计起飞时间， 日期 + 时间:2020-05-09 0725
+                timeArray = time.strptime(depTimeJ, "%Y-%m-%d %H%M")
+                timeStamp = int(time.mktime(timeArray))
+                offsetTime = int((timeStamp-time.time())/60)  #redis中的起飞时间与现在时间的时间差(min)
+                if offsetTime > 60*1:    #时间差大于1小时
+                    return hRes   #byte类型 [b'2020-05-09', b'1150', b'CA1118', b'14', b'0']
+            except Exception as e:
+                print(e)
+                print("该次格式化航班出错，将跳过筛选...")
+        flightNum = flightTemp
+    

@@ -14,7 +14,7 @@ from django.forms.models import model_to_dict
 import time
 import json
 import re
-import pytest
+
 
 from django.core.mail import send_mail
 
@@ -148,18 +148,21 @@ content_liucheng = """
 
 class Testcase_{0}(object):
     def test_run(self):
-        logger.info("开始测试: {1} ...")
+        '''
+        {2}
+        '''
+        logger.info("开始测试 ...")
         import subprocess
-        s=subprocess.Popen(['python', r'process_test\{2}'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
+        s=subprocess.Popen(['python', r'process_test\{1}'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
         try:
             while True:
                 nextline=s.stdout.readline()
                 logger.info(nextline.strip())
                 if nextline=="" and scan.poll()!=None:
-                    logger.info("测试完成: {1}  ...")
+                    logger.info("测试完成  ...")
                     break
         except:
-            logger.info("测试完成: {1}  ...")  
+            logger.info("测试完成  ...")  
 
 """
 
@@ -169,30 +172,28 @@ foot = """
 if __name__=="__main__":
     pytest.main([
         "runCase.py",
-        "-v","-s","--reruns=1","--color=yes","--self-contained-html","--html=./report/report_{0}.html",
-        "--log-cli-level=INFO",
-        "--log-cli-date-format=%Y-%m-%d %H:%M:%S",
-        "--log-cli-format=[%(asctime)s %(filename)s line:%(lineno)d]%(levelname)s:  %(message)s",
-        # "--setup-show=OFF"
+        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_{0}.html",
         ])
 """
 
 if __name__=="__main__":
-    product = "动态布控"
-    modular = "数据平台"
-    import time
-    timeStr = time.strftime('%Y%m%d%H%M%S',time.localtime()) #20200417135447
-    cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
-    f = open("runCase.py","w",encoding='utf-8')
-    f.write(head)
-    for case in cases:
-        if case.case_type == "单接口":
-            f.write(content_danjiekou %(case.casename.replace("-","_"),case.casename))
-        if case.case_type == "流程":
-            scripts_path = case.file_path
-            f.write(content_liucheng %(case.casename.replace("-","_"),case.casename,scripts_path))
-    f.write(foot % timeStr)
-    f.close()
-    os.system("runCase.py")
+    # product = "动态布控"
+    # modular = "数据平台"
+    # import time
+    # timeStr = time.strftime('%Y%m%d%H%M%S',time.localtime()) #20200417135447
+    # cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
+    # f = open("runCase.py","w",encoding='utf-8')
+    # f.write(head)
+    # for case in cases:
+    #     if case.case_type == "单接口":
+    #         f.write(content_danjiekou %(case.casename.replace("-","_"),case.casename))
+    #     if case.case_type == "流程":
+    #         scripts_path = case.file_path
+    #         f.write(content_liucheng %(case.casename.replace("-","_"),case.casename,scripts_path))
+    # f.write(foot % timeStr)
+    # f.close()
+    # os.system("runCase.py")
 
     # send_email(product, "hello spring")
+    print(os.getcwd())
+    print("over!!!")

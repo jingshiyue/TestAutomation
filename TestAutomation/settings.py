@@ -119,8 +119,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-log_path = os.path.join(BASE_DIR, 'logs')
-if not os.path.exists(log_path): os.mkdir(log_path)
+LOG_PATH = os.path.join(BASE_DIR, 'logs')
+if not os.path.exists(LOG_PATH): os.mkdir(LOG_PATH)
 import time
 LOGGING = {
     'version': 1,
@@ -147,7 +147,7 @@ LOGGING = {
         'log_file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(log_path, 'testAutomation_{}.log'.format(time.strftime('%Y-%m-%d'))),
+            'filename': os.path.join(LOG_PATH, 'testAutomation_{}.log'.format(time.strftime('%Y-%m-%d'))),
             'maxBytes': 1024*1024*50,
             'backupCount': 5,
             'formatter': 'verbose'
