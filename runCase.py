@@ -216,5 +216,5 @@ class Testcase_系统安检通过_系统复核通过_系统登机口复核通过
 if __name__=="__main__":
     pytest.main([
         "runCase.py",
-        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200520104557.html",
+        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200520135456.html",
         ])

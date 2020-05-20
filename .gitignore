@@ -1,12 +1,12 @@
-/venv/
-__pycache__/
-.idea/
+# 匹配模式最后跟斜杠(/)说明要忽略的是目录
+# logs/：忽略当前路径下的logs目录，包含logs下的所有子目录和文件
+# /logs.txt：忽略根目录下的logs.txt文件
+# *.class：忽略所有后缀为.class的文件
 
-
+**/__pycache__/
+**/.idea/
 db.sqlite3
-/testcase_manage/run/report/
-/testcase_manage/run/log/
 /report/
 /**/migrations/
-/testcase_manage/migrations/
-/product_manage/migrations/
+/logs/
+**/test_photoes/

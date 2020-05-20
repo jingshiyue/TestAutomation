@@ -1,7 +1,0 @@
-picture8k: B门特征
-
-idcard8k： B门特征
-
-B门都用8K
-
-picture2k：复核用的

@@ -3,7 +3,6 @@
 # Author : zcl
 """
 这个conftest,用于执行runcase.py,定制runcase.py生成的html报告
-
 """
 import pytest
 import time
@@ -21,6 +20,7 @@ def read_from_config(configfile,secion_name, item_name):
 
 def pytest_configure(config):
     try:
+        config._metadata["Platform"] = "Windows Server 2008 Enterprise"
         config._metadata["项目名称"] = read_from_config("testcase.ini","Product","name")
     except Exception as e:
         logger.info(e)
