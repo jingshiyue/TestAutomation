@@ -6,7 +6,6 @@
 **/__pycache__/
 **/.idea/
 db.sqlite3
-/report/
-/logs/
-**/test_photoes/
+/report/*.html
+/logs/*.log
 **/.pytest_cache/
