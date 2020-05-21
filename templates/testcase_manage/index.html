@@ -7,6 +7,8 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
     <script src="http://malsup.github.io/jquery.form.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
+    <script type="text/javascript" src="https://www.huangwx.cn/js/sweetalert-dev.js"></script>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     {# 网页标题内容块 #}
 	<title>{% block title %}{% endblock title %}</title>
@@ -16,85 +18,89 @@
     {% block topfiles %}{% endblock topfiles %}
     <style>
         .myform{
-            margin-top: 30px;
+            margin-top: 90px;
             /* padding-left: 200px; */
         }
         .footer {
             position: absolute;
+            /* position: fixed; */
             bottom: 0;
+            clear:both;
             /* width: 100%; */
             /* Set the fixed height of the footer here */
             height: 50px;
-            /* background-color: #2a925e; */
+            background-color: #2a925e;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-                <div class="form-group">
-                    <h1 class="text-center">测试模块配置</h1>
+            <div class="form-group">
+                <h1 class="text-center">测试模块配置</h1>
+            </div>
+            <br>
+            <form  method="POST" class="form-horizontal"  id="productForm">
+                <label for="products" class="col-lg-3 control-label" >项目  </label>
+                <div class="col-lg-6 ">
+                    <select class="selectpicker  form-control" style="text-align: center; text-align-last: center;" name="products" id="products" title="请选择">
+                        {% for product in products %}
+                            <option>{{ product.name }}</option>
+                        {% endfor %}
+                        <option value="" disabled selected hidden>选择项目</option>
+                    </select>
                 </div>
-                <br>
-                    <form class="form-horizontal" method="POST" id="queryForm">
-                        <div class="form-group">
-                            <label for="products" class="col-lg-3 control-label" >项目  </label>
-                            <div class="col-lg-6">
-                                <select class="selectpicker form-control" name="products" id="products" title="请选择" onchange="queryModulars()">
-                                    {% for product in products %}
-                                        <option>{{ product.name }}</option>
-                                    {% endfor %}
-                                    <option selected>---请选择---</option>
-                                </select>
-                            </div>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="modulars" class="col-lg-3 control-label" >模块  </label>
-                            <div class="col-lg-6">
-                                <select class="selectpicker form-control" name="modulars" id="modulars" >
-                                    <option selected>---请选择---</option>
-                                    <!-- {% for modular in modulars %}
-                                        <option>{{ modular.name }}</option>
-                                    {% endfor %} -->
-                                </select>
-                            </div>
-                            <div class="col-lg-1">
-                                <button id="queryButton" class="btn btn-primary glyphicon glyphicon-search" onclick="return queryCases()"> 查询</button>
-                            </div>
-                        </div>                 
-                    </form>
-        </div>
-
-        <div class="row">
-
+                <div class="col-lg-1">
+                    <button id="queryModulars" class="btn btn-primary glyphicon glyphicon-search" onclick="return queryModularsFunc()"> 查询模块</button>
+                </div>           
+            </form>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row" id="modularlist">
+            <form  action="/testcase/index/" method="POST" class="myform" id="modularForm" style="display:none">
+                <table class="table table-hover" id="modularTable">
+                    <thead>
+                        <tr>
+                            <th>选择</th>
+                            <th>模块</th>
+                        </tr>
+                    </thead>
+                    <tbody name="modularBody" id="modularBody">
+                    </tbody>
+                </table> 
+                <input name="modularBut1" class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers_modular()"/>
+                <button name="modularBut2" id="queryCaseButton" class="btn" style="display:none" onclick="return queryCasesFunc()">查询用例</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container-fluid">
         <div class="row" id="caselist">
-            <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseInfo" >
+            <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseForm" style="display:none">
                 <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
                 <!-- <button id="queryButton" class="btn" style="display:none" onclick="setOthers()">全选</button>
                 <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
                 <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
                 <input type="submit" value="执行" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
                 <!-- <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
-                <table class="table table-hover">
+                <span>用例</span>
+                <table class="table table-hover table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>选择</th>
-                            <th>用例名</th>
+                            <th>用例</th>
                             <th>接口路径</th>
-                            <th>创建人</th>
+                            <th>描述</th>
                         </tr>
                     </thead>
                     <tbody name="casebody" id="casebody">
                     </tbody>
                 </table>
                 <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
-                <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
-                <button id="queryButton" class="btn" style="display:none">执行</button>
+                <input id="queryCaseButton1" class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
+                <button id="queryCaseButton2" class="btn" style="display:none">执行</button>
             </form>
         </div>
     </div>
@@ -103,15 +109,6 @@
         <div class="row">
             <div class="col-lg-7 footer">
                 <div class="text-center ">
-                    <!-- <div class="foot_link">
-                            <a href="#">关于我们</a>
-                            <span>|</span>
-                            <a href="#">联系我们</a>
-                            <span>|</span>
-                            <a href="#">招聘人才</a>
-                            <span>|</span>
-                            <a href="#">友情链接</a>
-                    </div> -->
                     <p><small>CopyRight © 2020 重庆绿色智能技术研究院</small></p>
                 </div>
             </div>
@@ -137,82 +134,86 @@
             // console.log(newArray);  
             return newArray;  
         };  
-
-        function queryModulars()
-        {
-            var options = $("#products option:selected");
-            var productName = options.val();　
-            var xmlhttp;    
-            if (window.XMLHttpRequest)
-            {
-                // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                xmlhttp=new XMLHttpRequest();
-            }
-            else
-            {
-                // IE6, IE5 浏览器执行代码
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            // alert(productName);
-            xmlhttp.open("POST","/testcase/queryModulars/",true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send("product="+productName);
-
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                {
-                    // alert("OKKKKK:"+ typeof(xmlhttp.responseText));
-                    var rest = string2Array(xmlhttp.responseText)
-                    for (let i = 0, len = rest.length; i < len; i++) {
-                        // console.log(rest[i]);  //a b c d e
-                        $("#modulars").append("<option selected>"+ rest[i] +"</option>");
-                    }
-                }
-            }
-        }
             
-        $(function() {
-            $("#selectAll").change(function() {
-                var checkboxs = $("#tbody").find("input[type='checkbox']");
-                var isChecked = $(this).is(":checked");
-                //严禁使用foreach，jq对象的遍历会使浏览器崩溃
-                for(var i = 0; i < checkboxs.length; i++) {
-                    //临时变量，必须，否则只能选中最后一条记录
-                    var temp = i;
-                    $(checkboxs[temp]).prop("checked",isChecked);
-                }
+        function queryModularsFunc(){
+            $("#modularBody").empty()
+            $("#caseForm").hide()
+            $("[name='modularBut1']").hide()
+            $(this).ajaxSubmit({
+                    url:"/testcase/queryModulars/",
+                    async:true,
+                    type:"POST",
+                    data:{"products":$("#products").val()},
+                    success:function(data){
+                        // console.log(data) // { 4: "数据平台", 6: "动态布控测试部门" }
+                        // console.log(typeof(data))
+                        var templateStr = '<tr><td><input type="checkbox" name="modularNum" value={0}></td><td>{1}</td></tr><tr>'
+                        for (var key in data){
+                            var modularContents = String.format(templateStr,key,data[key])
+                            $("#modularBody").append(modularContents)
+                        }
+                        $("#modularForm").show()
+                        var count = Object.keys(data).length
+                        if (count > 1){
+                            $("[name='modularBut1']").show()
+                        }
+                        $("[name='modularBut2']").show()
+                    }
             });
-        });
+            return false;//阻止页面跳转
+        }
+
+        // $(function() {
+        //     $("#selectAll").change(function() {
+        //         var checkboxs = $("#tbody").find("input[type='checkbox']");
+        //         var isChecked = $(this).is(":checked");
+        //         //严禁使用foreach，jq对象的遍历会使浏览器崩溃
+        //         for(var i = 0; i < checkboxs.length; i++) {
+        //             //临时变量，必须，否则只能选中最后一条记录
+        //             var temp = i;
+        //             $(checkboxs[temp]).prop("checked",isChecked);
+        //         }
+        //     });
+        // });
         
-        function queryCases(){
+        function queryCasesFunc(){
             $("#casebody").empty()
-            $("#queryForm").ajaxSubmit({
+            $("#modularForm").ajaxSubmit({
                     url:"/testcase/index/",
                     async:true,
                     type:"POST",
-                    data:getCaseConf(),
+                    data:{products:$("#products").val()}, //post自己的data，同时也会把form默认的提交数据也post到后台
                     success:function(data){
+                        console.log(data)
                         var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td>{1}</td><td>{2}</td><td>{3}</td></tr>';
                         var count = 0
                         for (k in data){
                             console.log(data[k]["casename"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
-                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["user"])
+                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"])
                             $("#casebody").append(caseContents)
                             count++
                         }
+                        var register = "你确定挂  <span style='color: red;'>"+ "周成龙" +"</span> 的专家号吗？";
+
                         if (count > 0){
-                            $(".btn").show()
+                            $("#caseForm").show()
+                            $("#queryCaseButton1").show()
+                            $("#queryCaseButton2").show()
+                        }else{
+                            // swal("<span style='color: red'>选择的模块下没有可用的用例！！！</span>")
+                            swal("选择的模块下没有可用的用例！！！");
                         }
+
                     }
-                    
             });
             return false;//阻止页面跳转
         }
 
         function getCaseConf(){
             var product = $("#products").val()
-            var modular = $("#modulars").val()
+            var modular = $("input[name='modularNum']").val()
+            // console.log(product)
+            console.log(modular)
             return {product,modular}
         }
 
@@ -221,7 +222,7 @@
                 url:"testcase/generateCaseInfo/",
                 async:true,
                 type:"POST",
-                data:{products:"动态布控",modulars:"数据平台"},
+                data:{products:$("#products").val(),modulars:"数据平台"},
                 success:function(data){
                     alert(data)
                     // console.log(result);
@@ -237,6 +238,17 @@
                 return args[i];  
             });  
         };  
+
+        //反选
+        function setOthers_modular() {
+            var cases = document.getElementsByName("modularNum");
+            for (var i = 0; i < cases.length; i++) {
+                if (cases[i].checked == false)
+                    cases[i].checked = true;
+                else
+                    cases[i].checked = false;
+            }
+        }
 
         //反选
         function setOthers() {

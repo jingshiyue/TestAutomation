@@ -197,7 +197,7 @@ class Testcase_系统安检通过_系统复核通过_系统登机口复核通过
 【系统复核】:传入现场照B、现场特征B
 【系统登机口复核】:传入[身份证号]+机票
         '''
-        logger.info("开始测试 ...")
+        logger.info("测试开始 ...")
         import subprocess
         s=subprocess.Popen(['python', r'process_test\https_20190709\test_case\test_process_01.py'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
         try:
@@ -216,5 +216,5 @@ class Testcase_系统安检通过_系统复核通过_系统登机口复核通过
 if __name__=="__main__":
     pytest.main([
         "runCase.py",
-        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200520135456.html",
+        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200521162413.html",
         ])

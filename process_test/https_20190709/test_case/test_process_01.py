@@ -28,7 +28,6 @@ from process_test.https_20190709.test_case.data import *  #{'flight_no': 'DR6562
 
 def setup_function():
     flight = get_useful_flight(config.get("config","gateNoList").split(","))
-    logger.info({"flightInfo":flightInfo})
     flightInfo["flight_no"] = str(flight[2])[2:-1]
     flightInfo["bdno"] = str(flight[3])[2:-1]
     flightInfo["date"] = str(flight[0])[2:-1]

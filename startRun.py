@@ -151,7 +151,7 @@ class Testcase_{0}(object):
         '''
         {2}
         '''
-        logger.info("开始测试 ...")
+        logger.info("测试开始 ...")
         import subprocess
         s=subprocess.Popen(['python', r'process_test\{1}'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
         try:

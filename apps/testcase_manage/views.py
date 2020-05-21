@@ -38,38 +38,48 @@ def testcase_index(request):
         # return HttpResponse(obj)
         return render(request,'testcase_manage/index.html',locals())  #context={'objs':objs}
     if request.method =="POST":
-        logger.info(request.POST) #<QueryDict: {'products': ['动态布控'], 'modulars': ['数据平台']}>
+        logger.info(request.POST)  # <QueryDict: {'modularNum': ['4', '6'], 'products': ['动态布控']}>
         product = request.POST.get("products")
-        modular = request.POST.get("modulars")
-        cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
+        modular_ids_list = request.POST.getlist("modularNum")
+        # cases = TestCase.objects.all().filter(product_name__name=product)
+        # if not modulars:
+        #     cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
         casesJson = {}
-        for case in cases:
-            logger.info(case.id)
-            casesJson.setdefault(case.id,{})
-            casesJson[case.id].setdefault("casename",case.casename)
-            casesJson[case.id].setdefault("api",case.api)
-            casesJson[case.id].setdefault("user",case.user.get_username())
-            # casesJson.setdefault("url",case.url)
+        ids = ""
+        logger.info(modular_ids_list)
+        for id in modular_ids_list:
+            cases = TestCase.objects.all().filter(product_name__name=product,modular_name__id=id)
+            logger.info(id)
+            ids += id + ","
+            for case in cases:
+                logger.info(case.id)
+                casesJson.setdefault(case.id,{})
+                casesJson[case.id].setdefault("casename",case.casename)
+                casesJson[case.id].setdefault("api",case.api)
+                casesJson[case.id].setdefault("desc",case.desc)
         rst = JsonResponse(casesJson)
-        logger.info(rst)
+        logger.info(casesJson)
         try:
             write_to_config("testcase.ini","Product","name",product)
-            write_to_config("testcase.ini","Modular","name",modular)
+            write_to_config("testcase.ini","Modular","id",ids)
         except Exception as e:
             logger.info(e)
         return rst
 
-
 def queryModulars(request):
     if request.method == 'POST':
-        logger.info("queryModulars.POST")
-        productName = request.POST.get("product")
+        logger.info(request.POST)
+        productName = request.POST.get("products")
+        logger.info(productName)
+        logger.info(type(productName))
         modulars = Product.objects.all().get(name=productName).modular.all()
-        modularsStr = "["
+        modularsJson = {}
         for modular in modulars:
-            modularsStr = modularsStr + modular.name + ","
-        modularsStr = modularsStr[:-1] + "]"
-        rst = HttpResponse(modularsStr)
+            # modularsJson.setdefault("id",modular.id)
+            modularsJson.setdefault(modular.id,modular.name)
+        logger.info(modularsJson)
+        rst = JsonResponse(modularsJson)
+        logger.info(rst)
         return rst
 
 def generateCaseInfo(request):
