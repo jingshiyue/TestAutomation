@@ -66,6 +66,16 @@ def testcase_index(request):
             logger.info(e)
         return rst
 
+def detail(request):
+    if request.method =='GET':
+        id = request.GET.get("id")
+        logger.info(id)
+        case = TestCase.objects.all().get(id=id)
+        logger.info(case.casename)
+        return render(request,"testcase_manage/detail.html",locals())
+
+
+
 def queryModulars(request):
     if request.method == 'POST':
         logger.info(request.POST)

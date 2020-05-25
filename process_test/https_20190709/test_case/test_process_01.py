@@ -23,6 +23,7 @@ from django.conf import settings
 from conftest import get_useful_flight
 from data import flightInfo,config
 from process_test.https_20190709.test_case.data import *  #{'flight_no': 'DR6562', 'bdno': '02', 'date': '2020-05-09'}
+from myAssert import assert_parm
 
 
 
@@ -112,7 +113,8 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
         largePhoto=pho_dic["largePhoto"]  # 必填
     )
     logger.info({"B门[res.text]":res.text})
-    logger.info({"第一次安检时间:":time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())})
+    assert_parm(res.text,result=0)
+    logger.info({"第一次安检时间:":time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())}) 
     time.sleep(3)
     ############################################################################
     """2.3.22	自助闸机复核接口（二期）  [1:N]"""
@@ -122,6 +124,7 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
         deviceid = "T1AJ002",  # 必填
         scenephoto = pho_dic["scenePhoto_fuhe"],  # 必填,可以不用2K
         scenefeature = pho_dic["sceneFeature_2k"])  # 必填,需要2K文件夹里
+    
     result = json.loads(res.text)
     del result['userInfo']['basePhoto']
     logger.info({"系统复核[res.text]":result})

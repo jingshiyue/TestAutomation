@@ -7,7 +7,7 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
     <script src="http://malsup.github.io/jquery.form.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css"> -->
     <script type="text/javascript" src="https://www.huangwx.cn/js/sweetalert-dev.js"></script>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     {# 网页标题内容块 #}
@@ -29,11 +29,41 @@
             /* width: 100%; */
             /* Set the fixed height of the footer here */
             height: 50px;
-            background-color: #2a925e;
+            /* background-color: #2a925e; */
+        }
+        .hide{
+                display: none;
+            }
+        body.modal-open {
+            overflow-y: auto !important;		
+            padding-right: 0 !important;/*解决了右边框每次加17px问题*/
+        }
+        .modal-backdrop {
+            opacity: 0 !important;
+            filter: alpha(opacity=0) !important; 
         }
     </style>
 </head>
 <body>
+    
+
+    <!-- <h2>创建模态框（Modal）</h2>
+    <button class="btn btn-primary btn-lg" data-toggle="modal"
+            data-target="#myModal">
+         开始演示模态框
+    </button> -->
+
+     <!-- 模态框（Modal） -->
+    <div class="modal fade text-center " id="myModal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true" >
+       <div class="modal-dialog" style="display: inline-block; width: auto; height: auto;">
+           <div class="modal-content" data-dismiss="modal">
+
+           </div>
+        </div>
+     </div>
+
+
     <div class="container">
         <div class="row">
             <div class="form-group">
@@ -57,7 +87,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="row" id="modularlist">
             <form  action="/testcase/index/" method="POST" class="myform" id="modularForm" style="display:none">
                 <table class="table table-hover" id="modularTable">
@@ -76,17 +106,13 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="row" id="caselist">
             <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseForm" style="display:none">
-                <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
-                <!-- <button id="queryButton" class="btn" style="display:none" onclick="setOthers()">全选</button>
-                <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
                 <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
                 <input type="submit" value="执行" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
-                <!-- <button id="queryButton" class="btn" style="display:none">测试用例</button> -->
                 <span>用例</span>
-                <table class="table table-hover table-striped table-bordered">
+                <table class="table table-hover table-striped table-bordered " >
                     <thead>
                         <tr>
                             <th>选择</th>
@@ -98,14 +124,13 @@
                     <tbody name="casebody" id="casebody">
                     </tbody>
                 </table>
-                <!-- <input class="btn btn-primary" type="button" value="GET" onclick="alert($('#Jszzdm').val())"/> -->
                 <input id="queryCaseButton1" class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
                 <button id="queryCaseButton2" class="btn" style="display:none">执行</button>
             </form>
         </div>
     </div>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-lg-7 footer">
                 <div class="text-center ">
@@ -113,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </body>
 
@@ -162,19 +187,6 @@
             });
             return false;//阻止页面跳转
         }
-
-        // $(function() {
-        //     $("#selectAll").change(function() {
-        //         var checkboxs = $("#tbody").find("input[type='checkbox']");
-        //         var isChecked = $(this).is(":checked");
-        //         //严禁使用foreach，jq对象的遍历会使浏览器崩溃
-        //         for(var i = 0; i < checkboxs.length; i++) {
-        //             //临时变量，必须，否则只能选中最后一条记录
-        //             var temp = i;
-        //             $(checkboxs[temp]).prop("checked",isChecked);
-        //         }
-        //     });
-        // });
         
         function queryCasesFunc(){
             $("#casebody").empty()
@@ -184,24 +196,22 @@
                     type:"POST",
                     data:{products:$("#products").val()}, //post自己的data，同时也会把form默认的提交数据也post到后台
                     success:function(data){
-                        console.log(data)
-                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td>{1}</td><td>{2}</td><td>{3}</td></tr>';
+                        console.log(data)    //data-toggle="modal" data-target="#myModal" href="/testcase/detail/?id={4}"
+                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
                         var count = 0
                         for (k in data){
-                            console.log(data[k]["casename"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
-                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"])
+                            console.log(data[k]["id"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
+                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"],k)
+                            // var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"])
                             $("#casebody").append(caseContents)
                             count++
                         }
-                        var register = "你确定挂  <span style='color: red;'>"+ "周成龙" +"</span> 的专家号吗？";
-
                         if (count > 0){
                             $("#caseForm").show()
                             $("#queryCaseButton1").show()
                             $("#queryCaseButton2").show()
                         }else{
-                            // swal("<span style='color: red'>选择的模块下没有可用的用例！！！</span>")
-                            swal("选择的模块下没有可用的用例！！！");
+                            swal("模块下没有可用的用例");
                         }
 
                     }
@@ -261,6 +271,9 @@
             }
         }
             
+        $("#myModal").on("hidden", function() {
+        $(this).removeData("modal");
+        });
     </script>
 
 </html>

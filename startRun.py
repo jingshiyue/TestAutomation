@@ -154,16 +154,23 @@ class Testcase_{0}(object):
         logger.info("测试开始 ...")
         import subprocess
         s=subprocess.Popen(['python', r'process_test\{1}'],bufsize=0,stdout=subprocess.PIPE,universal_newlines=True)   
+        FAILED = False
         try:
             while True:
                 nextline=s.stdout.readline()
                 logger.info(nextline.strip())
+                if "AssertionError" in nextline or "FileNotFoundError" in nextline:
+                    FAILED = True
+                    break
                 if nextline=="" and scan.poll()!=None:
                     logger.info("测试完成  ...")
                     break
         except:
-            logger.info("测试完成  ...")  
-
+            pass
+        if FAILED:
+            logger.info("测试失败  ...")
+            assert 0
+        logger.info("测试完成  ...")
 """
 
 foot = """
