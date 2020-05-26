@@ -18,22 +18,23 @@ import re
 
 from django.core.mail import send_mail
 
-def send_email(product_name:str,timeStr:str):
-    notifiers = Product.objects.all().get(name=product_name).notifier.all()
-    to_email = []
-    for notifier in notifiers:
-        to_email.append(notifier.email)
+def send_email(que,product_name:str,timeStr:str):
+    if "COMPLATE" in que.get():
+        notifiers = Product.objects.all().get(name=product_name).notifier.all()
+        to_email = []
+        for notifier in notifiers:
+            to_email.append(notifier.email)
 
-    subject = '自动化测试平台'
-    message = ''
-    sender = settings.EMAIL_FROM
-    receiver = to_email
-    html_message = """  <h3>自动化测试平台</h3>
+        subject = '自动化测试平台'
+        message = ''
+        sender = settings.EMAIL_FROM
+        receiver = to_email
+        html_message = """  <h3>自动化测试平台</h3>
 
-                        <p>测试报告路径:<a href="{0}">{0}</a></p>
-                    """.format("http://192.168.1.42:8000/report/report_"+timeStr+".html")
+                            <p>测试报告路径:<a href="{0}">{0}</a></p>
+                        """.format("http://192.168.1.42:8000/report/report_"+timeStr+".html")
 
-    send_mail(subject, message, sender, receiver, html_message=html_message)
+        send_mail(subject, message, sender, receiver, html_message=html_message)
 
 
 head = """
@@ -159,7 +160,7 @@ class Testcase_{0}(object):
             while True:
                 nextline=s.stdout.readline()
                 logger.info(nextline.strip())
-                if "AssertionError" in nextline or "FileNotFoundError" in nextline:
+                if "AssertionError" in nextline or "FileNotFoundError" in nextline or "Error" in nextline:
                     FAILED = True
                     break
                 if nextline=="" and scan.poll()!=None:
@@ -169,7 +170,7 @@ class Testcase_{0}(object):
             pass
         if FAILED:
             logger.info("测试失败  ...")
-            assert 0
+            raise Exception('断言失败 ...')
         logger.info("测试完成  ...")
 """
 

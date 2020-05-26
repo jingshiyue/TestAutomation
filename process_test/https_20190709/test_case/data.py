@@ -9,6 +9,7 @@
 
 flightInfo = {} #{'flight_no': 'DR6562', 'bdno': '02', 'date': '2020-05-09'}
 
-import configparser
-config = configparser.ConfigParser()
-config.read(r"process_test\https_20190709\test_case\pytest.ini")
+# import configparser
+# config = configparser.ConfigParser()
+# config.read(r"process_test\https_20190709\test_case\pytest.ini")
+

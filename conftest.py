@@ -18,6 +18,16 @@ def read_from_config(configfile,secion_name, item_name):
     config.read(configfile,encoding='utf-8')
     return config.get(secion_name, item_name)
 
+def write_to_config(confPath,secion_name, item_name, value):
+    import configparser
+    config = configparser.ConfigParser()
+    config.read(confPath,encoding='utf-8')
+    if(config.has_section(secion_name) == False):
+        config.add_section(secion_name)
+    config.set(secion_name,item_name,value)
+    with open(confPath, 'w', encoding="utf-8") as config_file:
+        config.write(config_file)
+
 def pytest_configure(config):
     try:
         config._metadata["Platform"] = "Windows Server 2008 Enterprise"

@@ -12,6 +12,8 @@ from datetime import datetime
 import pytest
 from py._xmlgen import html
 
+
+
 @pytest.mark.optionalhook
 def pytest_html_results_table_header(cells):
     cells.insert(2, html.th('Description'))
@@ -36,6 +38,22 @@ def pytest_runtest_makereport(item, call):
 
 
 ###################################################################################
+def read_from_config(confPath,secion_name, item_name):
+    import configparser
+    config = configparser.ConfigParser()
+    config.read(confPath,encoding='utf-8')
+    print("reids",config.get(secion_name, item_name))
+    return config.get(secion_name, item_name)
+
+def write_to_config(confPath,secion_name, item_name, value):
+    import configparser
+    config = configparser.ConfigParser()
+    config.read(confPath,encoding='utf-8')
+    if(config.has_section(secion_name) == False):
+        config.add_section(secion_name)
+    config.set(secion_name,item_name,value)
+    with open(confPath, 'w', encoding="utf-8") as config_file:
+        config.write(config_file)
 
 @pytest.fixture()
 def struct_pho():
@@ -44,29 +62,32 @@ def struct_pho():
     :return:
     """
     pho_dic = {}
-    largePhoto = to_base64(r"D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\1018.jpg")
-    idx_pic = random.randint(10, 74)
-    # idx_pic = 31
-    idx_feature = random.randint(10, 74)
-    # idx_feature = 31
-    idx_pic = idx_feature
-
-    cardPhoto = to_base64(os.path.join(r"D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)", "%d.jpg" % (idx_pic-1)))
-    scenePhoto = to_base64(os.path.join(r"D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)","%d.jpg" % (idx_pic+0)))
-    scenePhoto_fuhe = to_base64(os.path.join(r"D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)","%d.jpg" % (idx_pic+1)))
-    sceneFeature = read_feature(os.path.join(r"D:\workfile\zhongkeyuan_workspace\test_photoes\picture8k","%d.txt" % idx_feature))
-    sceneFeature_2k = read_feature(os.path.join(r"D:\workfile\zhongkeyuan_workspace\test_photoes\picture2k","%d.txt" % idx_feature))
-    cardFeature = read_feature(os.path.join(r"D:\workfile\zhongkeyuan_workspace\test_photoes\idcard8k","%d.txt" % idx_feature))
-    pho_dic["scenePhoto"] = scenePhoto
-    pho_dic["scenePhoto_fuhe"] = scenePhoto_fuhe
+    largePhoto = to_base64(r"process_test\test_photoes\picture(现场照片)\1018.jpg")
+    idx_pic = random.randint(402, 741)  #照片在这段401--743连续，照片可以重复使用，仅作标识使用
+    #主要是特征值不能重复使用，照片可以重复使用.特征值和照片分开
+    idx_feature = read_from_config(r"process_test\https_20190709\test_case\pytest.ini","config","idx_feature")
+    idx_feature = int(idx_feature)
+    idx_feature_increase = idx_feature + 1  #特征文件700--1087，连续
+    write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","idx_feature",str(idx_feature_increase))
+    cardPhoto = to_base64(os.path.join(r"process_test\test_photoes\picture(现场照片)", "%d.jpg" % (idx_pic-1)))
+    scenePhoto = to_base64(os.path.join(r"process_test\test_photoes\picture(现场照片)","%d.jpg" % (idx_pic)))
+    scenePhoto_fuhe = to_base64(os.path.join(r"process_test\test_photoes\picture(现场照片)","%d.jpg" % (idx_pic+1)))
+    scenePhoto_fuhe_dengji = to_base64(os.path.join(r"process_test\test_photoes\picture(现场照片)","%d.jpg" % (idx_pic+2)))
+    sceneFeature = read_feature(os.path.join(r"process_test\test_photoes\picture8k","%d.txt" % idx_feature))
+    sceneFeature_2k = read_feature(os.path.join(r"process_test\test_photoes\picture2k","%d.txt" % idx_feature))
+    cardFeature = read_feature(os.path.join(r"process_test\test_photoes\idcard8k","%d.txt" % idx_feature))
+    pho_dic["scenePhoto"] = scenePhoto  #安检现场照
+    pho_dic["scenePhoto_fuhe"] = scenePhoto_fuhe  #复核现场照
+    pho_dic["scenePhoto_fuhe_dengji"] = scenePhoto_fuhe_dengji  #登机口复核现场照
     pho_dic["cardPhoto"] = cardPhoto
     pho_dic["largePhoto"] = largePhoto
     pho_dic["cardFeature"] = cardFeature
     pho_dic["sceneFeature"] = sceneFeature
     pho_dic["sceneFeature_2k"] = sceneFeature_2k
-    logger.info("cardPhoto: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic-1) )
-    logger.info(r"scenePhoto: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic))
-    logger.info("scenePhoto_fuhe: D:\workfile\zhongkeyuan_workspace\test_photoes\picture(现场照片)\%d.jpg" % (idx_pic+1))
+    logger.info(r"证件照: test_photoes\picture(现场照片)\%d.jpg" % (idx_pic-1) )
+    logger.info(r"安检现场照: test_photoes\picture(现场照片)\%d.jpg" % (idx_pic))
+    logger.info(r"复核现场照: test_photoes\picture(现场照片)\%d.jpg" % (idx_pic+1))
+    logger.info(r"登机口复核现场照: test_photoes\picture(现场照片)\%d.jpg" % (idx_pic+2))
     return pho_dic
 
 
@@ -213,12 +234,16 @@ def creat_zhiji_byFlight(request):
     lk_chkt = get_time_mmss()
     lk_outtime = get_flight_out_time()
     lk_date = produce_flight_date()
-    lk_bdno  = str(random.randint(1,999))
+    # lk_bdno  = str(random.randint(1,999))
+    lk_bdno = read_from_config(r"process_test\https_20190709\test_case\pytest.ini","config","lk_bdno")
+    lk_bdno = int(lk_bdno) + 1
+    lk_bdno = str(lk_bdno).zfill(3)
+    write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","lk_bdno",lk_bdno)
     lk_seat = lk_bdno + "A"   #座位号
     lk_flight = flightInfo["flight_no"]
     lk_id = str(random.randint(1, 999))
     lk_inf = ""
-    lk_cname = "大西瓜7"
+    lk_cname = "测试" + lk_bdno
     lk_ename = "DAXIGUA7"
     lk_gateno = flightInfo["bdno"]  #需要指定登机口
     lk_desk = "CTU"
@@ -227,7 +252,7 @@ def creat_zhiji_byFlight(request):
     if "lk_inf" in request.param:
         lk_inf = request.param["lk_inf"]
     if "lk_cname" in request.param:
-        lk_cname = request.param["lk_cname"]
+        lk_cname = request.param["lk_cname"] + lk_bdno
     if "lk_ename" in request.param:
         lk_ename = request.param["lk_ename"]
     if "lk_seat" in request.param:
@@ -358,12 +383,12 @@ def get_useful_flight(gateNoList:list):
     parm:gateNoList 登机口列表 如["02","02A","03","03A",]
     """
     import redis
-    from process_test.https_20190709.test_case.data import config
+    # from process_test.https_20190709.test_case.data import config
     try:
-        sr=redis.StrictRedis(host=config.get("config","redis"), port=6379, db=2,password='cigit')
+        sr=redis.StrictRedis(host=read_from_config(r"process_test\https_20190709\test_case\pytest.ini","config","redis"), port=6379, db=2,password='cigit')
     except Exception as e:
         print(e)
-
+        raise e
     import time
     flightTemp = "plan-" + time.strftime("%Y-%m-%d",time.localtime()) #plan-2020-05-08
     for gate in gateNoList:

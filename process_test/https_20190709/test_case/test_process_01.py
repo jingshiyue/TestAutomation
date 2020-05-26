@@ -20,19 +20,27 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TestAutomation.settings')
 django.setup()
 from django.conf import settings
-from conftest import get_useful_flight
-from data import flightInfo,config
+from conftest import get_useful_flight,read_from_config,write_to_config
+from data import flightInfo
 from process_test.https_20190709.test_case.data import *  #{'flight_no': 'DR6562', 'bdno': '02', 'date': '2020-05-09'}
 from myAssert import assert_parm
 
 
-
 def setup_function():
-    flight = get_useful_flight(config.get("config","gateNoList").split(","))
+    # flight = get_useful_flight(config.get("config","gateNoList").split(","))
+    flight = get_useful_flight(read_from_config(r"process_test\https_20190709\test_case\pytest.ini","config","gateNoList").split(","))
     flightInfo["flight_no"] = str(flight[2])[2:-1]
     flightInfo["bdno"] = str(flight[3])[2:-1]
     flightInfo["date"] = str(flight[0])[2:-1]
-    logger.info({"[正在登机]航班":flightInfo})
+    data_ini = read_from_config(r"process_test\https_20190709\test_case\pytest.ini","config","data")
+    flight_ini = read_from_config(r"process_test\https_20190709\test_case\pytest.ini","config","flight")
+    if flightInfo["date"] not in data_ini:
+        write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","data",flightInfo["date"])
+        write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","idx_feature","699")
+        write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","lk_bdno","000")
+    if flightInfo["flight_no"] not in flight_ini:
+        write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","flight",flightInfo["flight_no"])
+        write_to_config(r"process_test\https_20190709\test_case\pytest.ini","config","lk_bdno","000")
 
     res = AirportProcess().api_face_boarding_start(
         flightNo=flightInfo["flight_no"],
@@ -41,11 +49,13 @@ def setup_function():
         gateNo="01",
         flightDay=flightInfo["date"]
     )
-
     logger.info({"开始登机[res.text]":res.text})
-
+    assert_parm(res.text,status=0)
+    assert_parm(res.text,msg="Success")
+    logger.info({"[正在登机]航班":flightInfo}) #{'flight_no': '9D5671', 'bdno': '19', 'date': '2020-05-26'}
+    
 def teardown_function():
-    logger.info({"teardown":"-------"})
+    # logger.info({"teardown":"-------"})
     flightInfo = {}
 
 
@@ -54,8 +64,9 @@ def teardown_function():
 "lk_flight": "CA1645",  航班号
 "lk_bdno":"001",  登机序号
 """
+# @pytest.mark.repeat(2)
 # @pytest.mark.skip(reason="根据登机口自动查找到航班(起飞时间间隔>1h )A-> B-> 复核(分为自助和人工两种)-> 发送开始登机-> 登机复核")
-@pytest.mark.parametrize("creat_zhiji_byFlight", [{"lk_cname":"大西瓜003"}],indirect=True)
+@pytest.mark.parametrize("creat_zhiji_byFlight", [{"lk_cname":"二师兄"}],indirect=True)
 def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno': '02', 'date': '2020-05-09'}
     """
     fixture parameters.
@@ -63,7 +74,6 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
     zhiji_dic = creat_zhiji_byFlight
     pho_dic = struct_pho
     logger.info({"值机信息":zhiji_dic})
-
 
     ############################################################################
     """2.3.20自助验证闸机A门接口（二期）"""
@@ -87,6 +97,7 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
         fId=get_uuid()  # 必填
     )
     logger.info({"A门[res.text]":res.text})
+    assert_parm(res.text,result=0)
 
 
     """2.3.21自助验证闸机B门接口（二期）"""
@@ -114,7 +125,7 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
     )
     logger.info({"B门[res.text]":res.text})
     assert_parm(res.text,result=0)
-    logger.info({"第一次安检时间:":time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())}) 
+    # logger.info({"第一次安检时间:":time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())})
     time.sleep(3)
     ############################################################################
     """2.3.22	自助闸机复核接口（二期）  [1:N]"""
@@ -123,8 +134,9 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
         gateno = "T1AF1",  # 必填 对应T1AJ1
         deviceid = "T1AJ002",  # 必填
         scenephoto = pho_dic["scenePhoto_fuhe"],  # 必填,可以不用2K
-        scenefeature = pho_dic["sceneFeature_2k"])  # 必填,需要2K文件夹里
-    
+        scenefeature = pho_dic["sceneFeature_2k"]  # 必填,需要2K文件夹里
+    )
+    assert_parm(res.text,result=0)
     result = json.loads(res.text)
     del result['userInfo']['basePhoto']
     logger.info({"系统复核[res.text]":result})
@@ -148,22 +160,41 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
     #     flightDay=zhiji_dic["lk_date"])
     # logger.info({"人工复核":res.text})
     ############################################################################
+    time.sleep(60*1)
+    """2.3.11登机口复核接口（二期优化）"""
+    res = AirportProcess().api_face_boarding_review_check(
+        faceImage=pho_dic["scenePhoto_fuhe_dengji"],
+        faceFeature=pho_dic["sceneFeature_2k"],
+        deviceCode="T1DJ001",
+        boardingGate=zhiji_dic["lk_gateno"],
+        flightNo=zhiji_dic["lk_flight"],
+        flightDay=zhiji_dic["lk_date"],  # （yyyyMMdd）
+        gateNo=zhiji_dic["lk_gateno"],
+    )
+    logger.info({"登机口系统复核[res.text]":res.text})
+    assert_parm(res.text,result=0)
 
-    # time.sleep(60*10)
-    # """2.3.11登机口复核接口（二期优化）"""
-    # res = AirportProcess().api_face_boarding_review_check(
-    #     faceImage=pho_dic["scenePhoto_fuhe"],
-    #     faceFeature=pho_dic["sceneFeature_2k"],
-    #     deviceCode="T1DJ001",
-    #     boardingGate=zhiji_dic["lk_gateno"],
-    #     flightNo=zhiji_dic["lk_flight"],
-    #     flightDay=zhiji_dic["lk_date"],  # （yyyyMMdd）
-    #     gateNo=zhiji_dic["lk_gateno"],
-    # )
-    # logger.info({"登机口系统复核[res.text]":res.text})
-    # ############################################################################
-    logger.info("test_01测试完成")
+    #############################################################################
+    """ 1、按身份证回查  2、按票回查"""
+    res = AirportProcess().api_face_data_flowback_query(
+        reqId=get_uuid(),
+        cardId=zhiji_dic["idNo"],
+        flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
+        isFuzzyQuery=0,
+        # seatId="0INF"
+    )
+    logger.info({"身份证回查":res.text})
 
+    res = AirportProcess().api_face_data_flowback_query(
+        reqId=get_uuid(),
+        # cardId="142724198605103941",
+        flightNo=zhiji_dic["lk_flight"],
+        boardingNumber=zhiji_dic["lk_bdno"],
+        flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
+        isFuzzyQuery=0,
+        # seatId="0INF"
+    )
+    logger.info({"票回查":res.text})
 
 
 if __name__ == '__main__':
@@ -175,9 +206,10 @@ if __name__ == '__main__':
     pytest.main([
                 filePath,
                 "-v","-s",
+                # '--count=6',    #重复执行用例次数
                 "--log-cli-level=INFO",     #能将日志写进html报告里
                 "--log-cli-date-format=%Y-%m-%d %H:%M:%S",
                 "--log-cli-format=[%(asctime)s %(filename)s line:%(lineno)d]%(levelname)s:  %(message)s",
-                # "--self-contained-html","--html=./report/report.html",
+                "--self-contained-html","--html=./report/report.html",
     ])
 
