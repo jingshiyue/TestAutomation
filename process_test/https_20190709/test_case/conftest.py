@@ -3,8 +3,8 @@
 # Author : zcl
 import pytest,sys,pymysql,random
 from https_20190709.common.common_method import *
-from BaiTaAirport2_month.common import Idcardnumber
-from BaiTaAirport2_month.msgQueue import Autosendlk
+from https_20190709.common import Idcardnumber
+from https_20190709.common import Autosendlk
 import logging,time
 logger = logging.getLogger(__name__)
 
@@ -214,6 +214,7 @@ def creat_zhiji_random(request):
     zhiji_dic["lk_desk"] = lk_desk
     zhiji_dic["lk_bdno"] = lk_bdno  #登机序号
     time.sleep(2)
+
     return zhiji_dic
 
 

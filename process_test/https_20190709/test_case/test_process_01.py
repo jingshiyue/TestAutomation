@@ -10,7 +10,7 @@ import pytest,os,sys
 sys.path.extend([sys.path[0] + r"\..\..",sys.path[0] + r"\..\..\..",sys.path[0] + r"\.."])
 import threading
 import xlwt
-from BaiTaAirport2_month.msgQueue.Autosendlk import *
+from https_20190709.common.Autosendlk import *
 from https_20190709.API_https.AirportProcess import AirportProcess
 from https_20190709.common.common_method import *
 import json,time
@@ -24,6 +24,61 @@ from conftest import get_useful_flight,read_from_config,write_to_config
 from data import flightInfo
 from process_test.https_20190709.test_case.data import *  #{'flight_no': 'DR6562', 'bdno': '02', 'date': '2020-05-09'}
 from myAssert import assert_parm
+
+
+def assert_backQuery_byId(**kwargs):
+    from https_20190709.API_https.AirportProcess import AirportProcess
+    from process_test.https_20190709.common.common_method import to_base64
+    """ 按身份证回查 """
+    res = AirportProcess().api_face_data_flowback_query(
+        reqId=get_uuid(),
+        cardId=kwargs["idNo"],
+        flightDay=kwargs["lk_date"],
+        isFuzzyQuery=0,
+        seatId="0INF"
+    )
+    return res.text
+
+def assert_backQuery_byTicket(**kwargs):
+    from https_20190709.API_https.AirportProcess import AirportProcess
+    from process_test.https_20190709.common.common_method import to_base64
+    """ 按票回查"""
+    res = AirportProcess().api_face_data_flowback_query(
+        reqId=get_uuid(),
+        # cardId="142724198605103941",
+        flightNo=kwargs["lk_flight"],
+        boardingNumber=kwargs["lk_bdno"],
+        flightDay=kwargs["lk_date"],  # 航班dd
+        isFuzzyQuery=0,
+        seatId="0INF"
+    )
+    return res.text
+    
+def assert_backQuery(**kwargs):
+    from https_20190709.API_https.AirportProcess import AirportProcess
+    from process_test.https_20190709.common.common_method import to_base64
+    """ 按身份证回查  2、按票回查"""
+    res = AirportProcess().api_face_data_flowback_query(
+        reqId=get_uuid(),
+        # cardId=zhiji_dic["idNo"],
+        cardId=kwargs["idNo"],
+        # flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
+        flightDay=kwargs["lk_date"],
+        isFuzzyQuery=0,
+        # seatId="0INF"
+    )
+    return res.text
+
+    # res = AirportProcess().api_face_data_flowback_query(
+    #     reqId=get_uuid(),
+    #     # cardId="142724198605103941",
+    #     flightNo=zhiji_dic["lk_flight"],
+    #     boardingNumber=zhiji_dic["lk_bdno"],
+    #     flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
+    #     isFuzzyQuery=0,
+    #     # seatId="0INF"
+    # )
+    # logger.info({"票回查":res.text})
 
 
 def setup_function():
@@ -175,26 +230,31 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
     assert_parm(res.text,result=0)
 
     #############################################################################
+    # D:\workfile\zhongkeyuan_workspace\TestAutomation\process_test\https_20190709\common\common_method.py
+    from process_test.https_20190709.common.common_method import to_base64
     """ 1、按身份证回查  2、按票回查"""
-    res = AirportProcess().api_face_data_flowback_query(
-        reqId=get_uuid(),
-        cardId=zhiji_dic["idNo"],
-        flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
-        isFuzzyQuery=0,
-        # seatId="0INF"
-    )
-    logger.info({"身份证回查":res.text})
+    res = assert_backQuery_byId(idNo=zhiji_dic["idNo"],lk_date=zhiji_dic["lk_date"][-2:])
 
-    res = AirportProcess().api_face_data_flowback_query(
-        reqId=get_uuid(),
-        # cardId="142724198605103941",
-        flightNo=zhiji_dic["lk_flight"],
-        boardingNumber=zhiji_dic["lk_bdno"],
-        flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
-        isFuzzyQuery=0,
-        # seatId="0INF"
-    )
-    logger.info({"票回查":res.text})
+    # res = AirportProcess().api_face_data_flowback_query(
+    #     reqId=get_uuid(),
+    #     cardId=zhiji_dic["idNo"],
+    #     flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
+    #     isFuzzyQuery=0,
+    #     # seatId="0INF"
+    # )
+    # logger.info({"身份证回查":res.text})
+
+
+    # res = AirportProcess().api_face_data_flowback_query(
+    #     reqId=get_uuid(),
+    #     # cardId="142724198605103941",
+    #     flightNo=zhiji_dic["lk_flight"],
+    #     boardingNumber=zhiji_dic["lk_bdno"],
+    #     flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
+    #     isFuzzyQuery=0,
+    #     # seatId="0INF"
+    # )
+    # logger.info({"票回查":res.text})
 
 
 if __name__ == '__main__':
@@ -204,7 +264,7 @@ if __name__ == '__main__':
     """
     filePath = os.path.realpath(__file__).split("TestAutomation")[1][1:].replace("\\","\\\\")
     pytest.main([
-                filePath,
+                r"process_test\https_20190709\test_case\test_process_01.py",
                 "-v","-s",
                 # '--count=6',    #重复执行用例次数
                 "--log-cli-level=INFO",     #能将日志写进html报告里
@@ -212,4 +272,3 @@ if __name__ == '__main__':
                 "--log-cli-format=[%(asctime)s %(filename)s line:%(lineno)d]%(levelname)s:  %(message)s",
                 "--self-contained-html","--html=./report/report.html",
     ])
-

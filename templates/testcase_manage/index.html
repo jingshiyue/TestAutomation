@@ -34,25 +34,18 @@
         .hide{
                 display: none;
             }
-        body.modal-open {
+        /* body.modal-open {
             overflow-y: auto !important;		
-            padding-right: 0 !important;/*解决了右边框每次加17px问题*/
-        }
-        .modal-backdrop {
+            padding-right: 0 !important; 
+        } */
+        /* .modal-backdrop {
             opacity: 0 !important;
             filter: alpha(opacity=0) !important; 
-        }
+        } */
     </style>
 </head>
 <body>
     
-
-    <!-- <h2>创建模态框（Modal）</h2>
-    <button class="btn btn-primary btn-lg" data-toggle="modal"
-            data-target="#myModal">
-         开始演示模态框
-    </button> -->
-
      <!-- 模态框（Modal） -->
     <div class="modal fade text-center " id="myModal" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true" >
@@ -111,7 +104,7 @@
             <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseForm" style="display:none">
                 <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
                 <input type="submit" value="执行" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
-                <span>用例</span>
+                <h3 style="color: cornflowerblue; margin-bottom: 20px; padding-left: 10px;">用 例 列 表</h3>
                 <table class="table table-hover table-striped table-bordered " >
                     <thead>
                         <tr>
@@ -197,7 +190,8 @@
                     data:{products:$("#products").val()}, //post自己的data，同时也会把form默认的提交数据也post到后台
                     success:function(data){
                         console.log(data)    //data-toggle="modal" data-target="#myModal" href="/testcase/detail/?id={4}"
-                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
+                        // var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
+                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" target="_blank" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
                         var count = 0
                         for (k in data){
                             console.log(data[k]["id"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
@@ -211,7 +205,8 @@
                             $("#queryCaseButton1").show()
                             $("#queryCaseButton2").show()
                         }else{
-                            swal("模块下没有可用的用例");
+                            // swal("模块下没有可用的用例");
+                            alert("模块下没有可用的用例")
                         }
 
                     }

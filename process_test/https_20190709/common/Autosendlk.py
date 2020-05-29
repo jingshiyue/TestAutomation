@@ -2,8 +2,10 @@
 import os
 import random
 from xml.etree import ElementTree as ET
-from BaiTaAirport2_month.common.common_method import *
-from BaiTaAirport2_month.msgQueue.msg import send_msg
+#from BaiTaAirport2_month.common.common_method import *
+from https_20190709.common.common_method import *
+#from BaiTaAirport2_month.msgQueue.msg import send_msg
+from https_20190709.common.msg import send_msg
 
 name = os.path.realpath(__file__).split("\\")[-1].split(".")[0]
 

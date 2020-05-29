@@ -530,6 +530,8 @@ class AirportProcess(BlackListApi):
                 "seatId":seatId     #值为INF表示婴儿票
                 }
         print(body)
+        print(self.api_v1_face_data_flowback_query)
+        
         res = requests.post(url=self.api_v1_face_data_flowback_query,
                             headers=self.get_headers("/api/v1/face/data/flowback-query"),
                             json=body,
