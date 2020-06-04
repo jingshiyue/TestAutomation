@@ -7,9 +7,8 @@ from django.http import JsonResponse
 from django.conf import settings
 logger = logging.getLogger(__name__)
 from conftest import read_from_config,write_to_config
-# from multiprocessing import Queue
-# from multiprocessing import Process
 import queue,threading
+import time,os
 
 def run_test(que):
     import os
@@ -41,6 +40,7 @@ def testcase_index(request):
                 casesJson[case.id].setdefault("casename",case.casename)
                 casesJson[case.id].setdefault("api",case.api)
                 casesJson[case.id].setdefault("desc",case.desc)
+                casesJson[case.id].setdefault("file_path",case.file_path)
         rst = JsonResponse(casesJson)
         logger.info(casesJson)
         try:
@@ -56,7 +56,7 @@ def detail(request):
         logger.info(id)
         case = TestCase.objects.all().get(id=id)
         logger.info(case.casename)
-        time.sleep(1)
+        time.sleep(.5)
         return render(request,"testcase_manage/detail.html",locals())
 
 
@@ -86,7 +86,6 @@ def generateCaseInfo(request):
         logger.info(request.POST) #<QueryDict: {'caseNum': ['6', '7']}
         #ids = request.POST.getlist('caseNum') #['6', '7']
         ids = [int(x) for x in request.POST.getlist('caseNum')]
-        import time,os
         timeStr = time.strftime('%Y%m%d%H%M%S',time.localtime())
         from startRun import head,foot,content_danjiekou,content_liucheng
         f = open("runCase.py","w",encoding='utf-8')

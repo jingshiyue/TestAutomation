@@ -295,6 +295,7 @@ def creat_zhiji_byFlight(request):
     zhiji_dic["lk_seat"] = lk_seat #座位号
     zhiji_dic["lk_desk"] = lk_desk
     zhiji_dic["lk_bdno"] = lk_bdno  #登机序号
+    zhiji_dic["lk_id"] = lk_id
     time.sleep(1)
     return zhiji_dic
 

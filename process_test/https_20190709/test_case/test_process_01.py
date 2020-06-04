@@ -3,7 +3,7 @@
 # Author : zcl
 
 """
-用于测试流程: 安检(系统)->复核(系统)->登机口复核(系统)
+用于测试流程: 系统安检-系统复核-人脸复核登机
 """
 
 import pytest,os,sys
@@ -27,22 +27,22 @@ from myAssert import assert_parm
 
 
 def assert_backQuery_byId(**kwargs):
+    """ 按身份证回查 """
     from https_20190709.API_https.AirportProcess import AirportProcess
     from process_test.https_20190709.common.common_method import to_base64
-    """ 按身份证回查 """
     res = AirportProcess().api_face_data_flowback_query(
         reqId=get_uuid(),
         cardId=kwargs["idNo"],
         flightDay=kwargs["lk_date"],
         isFuzzyQuery=0,
-        seatId="0INF"
+        # seatId="0INF"
     )
     return res.text
 
 def assert_backQuery_byTicket(**kwargs):
+    """ 按票回查"""
     from https_20190709.API_https.AirportProcess import AirportProcess
     from process_test.https_20190709.common.common_method import to_base64
-    """ 按票回查"""
     res = AirportProcess().api_face_data_flowback_query(
         reqId=get_uuid(),
         # cardId="142724198605103941",
@@ -138,7 +138,7 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
         deviceId="T1AJ001",  # 必填
         cardType=0,  # 必填
         idCard=zhiji_dic["idNo"],  # 必填
-        nameZh=zhiji_dic["lk_cname"],
+        nameZh=zhiji_dic["lk_cname"],   #输入身份证时，
         nameEn=zhiji_dic["lk_ename"],
         age=get_age(zhiji_dic["idNo"]),
         sex=zhiji_dic["sex"],
@@ -234,7 +234,6 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
     from process_test.https_20190709.common.common_method import to_base64
     """ 1、按身份证回查  2、按票回查"""
     res = assert_backQuery_byId(idNo=zhiji_dic["idNo"],lk_date=zhiji_dic["lk_date"][-2:])
-
     # res = AirportProcess().api_face_data_flowback_query(
     #     reqId=get_uuid(),
     #     cardId=zhiji_dic["idNo"],

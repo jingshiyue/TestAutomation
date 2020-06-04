@@ -1,6 +1,7 @@
 from django.db import models
 from product_manage.models import BaseModel
 from product_manage.models import Product,Modular
+from django.core.exceptions import ValidationError
 # class API(models.Model):
 #     id = models.AutoField(primary_key=True)
 #     modular_name = models.ForeignKey('product_manage.Modular', on_delete=models.SET_NULL, null=True,
@@ -19,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 class TestCase(BaseModel):
     '''
-        用例模块: 分为单接口、流程
+    用例模块: 分为单接口、流程
     '''
     HTTP_METHODS = (
         ('POST', 'POST'),
@@ -72,10 +73,31 @@ class TestCase(BaseModel):
     level = models.CharField(max_length=64, verbose_name="用例等级", choices=LEVELS, default="一般")
     skip = models.BooleanField("是否跳过该用例", default=False)
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     def __str__(self):
         return self.casename
 
+    def clean(self):
+        if "单接口" in self.case_type:
+            if not self.api:
+                raise ValidationError('需要填【接口路径】 !')
+            if not self.body:
+                raise ValidationError('需要填【请求体列表】 !')
+            if "---" in self.method:
+                raise ValidationError('需要填【请求方式】 !')
+            if self.body:
+                import json
+                try:
+                    json.loads(self.body)
+                except:
+                    raise ValidationError('【请求体列表】 格式要求json格式!')
+        if "流程" in self.body:
+            if not self.file_path:
+                raise ValidationError('需要填【启动脚本路径】!')
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super(TestCase, self).save(*args, **kwargs)
 
     class Meta:
         unique_together = ('casename', 'modular_name',)

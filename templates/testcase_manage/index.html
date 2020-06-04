@@ -111,6 +111,7 @@
                             <th>选择</th>
                             <th>用例</th>
                             <th>接口路径</th>
+                            <th>脚本路径</th>
                             <th>描述</th>
                         </tr>
                     </thead>
@@ -191,11 +192,11 @@
                     success:function(data){
                         console.log(data)    //data-toggle="modal" data-target="#myModal" href="/testcase/detail/?id={4}"
                         // var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
-                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" target="_blank" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
+                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={0}" target="_blank" >{1}</a></td><td>{2}</td><td>{4}</td><td>{3}</td></tr>';
                         var count = 0
                         for (k in data){
                             console.log(data[k]["id"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
-                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"],k)
+                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"],data[k]["file_path"])
                             // var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"])
                             $("#casebody").append(caseContents)
                             count++

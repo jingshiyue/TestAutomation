@@ -65,7 +65,7 @@ def send_lkxx(lk_IsInternation="0",
     #     list_data.append(person_info)
     # with open("./info.json", "w", encoding="utf-8") as fp2:
     #     json.dump(fp2, list_data)
-
+    lk_id = str(random.randint(0,10000000)).zfill(7)   #20200601新增， lk_id为7位，且不重复
     base_file_path = os.path.realpath(__file__)
     base_dir_path = os.path.dirname(base_file_path)
     project_path = os.path.dirname(base_dir_path)

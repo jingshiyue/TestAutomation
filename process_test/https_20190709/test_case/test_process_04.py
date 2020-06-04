@@ -3,7 +3,7 @@
 # Author : zcl
 
 """
-用于测试流程: 系统安检-系统复核-刷证快速登机
+用于测试流程: 系统安检-系统复核-登机口放行
 """
 
 import pytest,os,sys
@@ -196,56 +196,27 @@ def test_01(creat_zhiji_byFlight,struct_pho):    #{'flight_no': 'CA8295', 'bdno'
     del result['userInfo']['basePhoto']
     logger.info({"系统复核[res.text]":result})
 
-    # """2.3.7复核口人工复核接口（二期)安检的状态(0人证1:1 1 人工放行 2闸机B门通过 3-未知)"""
-    # res = AirportProcess().api_face_review_manual_check(
-    #     reqId=get_uuid(),
-    #     gateNo="T1AF1",
-    #     deviceId="T1AF002",
-    #     scenePhoto=pho_dic["scenePhoto"],
-    #     cardNo=zhiji_dic["idNo"],
-    #     passengerName=zhiji_dic["lk_cname"],
-    #     passengerEnglishName=zhiji_dic["lk_ename"],
-    #     securityStatus=2,  # 安检的状态(0人证1:1,1 人工放行,2闸机B门通过,3-未知)
-    #     securityPassTime=zhiji_dic["lk_chkt"],
-    #     securityGateNo="",
-    #     securityDeviceNo="",
-    #     flightNo=zhiji_dic["lk_flight"],
-    #     boardingNumber=zhiji_dic["lk_bdno"],
-    #     sourceType=0,
-    #     flightDay=zhiji_dic["lk_date"])
-    # logger.info({"人工复核":res.text})
-    ############################################################################
+    ######################### 回查-> 登机口人工放行 ###############################
+    res = assert_backQuery_byId(idNo=zhiji_dic["idNo"],lk_date=zhiji_dic["lk_date"][-2:])
     time.sleep(60*1)
-    """2.3.12登机口复核接口（二期优化）"""
-    res = AirportProcess().api_v1_face_boarding_ticket_check(
+    """2.3.19	登机口人工放行、报警接口（二期）"""
+    res = AirportProcess().api_face_boarding_manual_check(
         # faceImage=pho_dic["scenePhoto_fuhe_dengji"],
         # faceFeature=pho_dic["sceneFeature_2k"],
-        deviceCode="T1ZZ002",
-        boardingGate=zhiji_dic["lk_gateno"],
-        flightNo=zhiji_dic["lk_flight"],
-        flightDay=zhiji_dic["lk_date"],  # （yyyyMMdd）
-        gateNo=zhiji_dic["lk_gateno"],
         cardId=zhiji_dic["idNo"],
+        data=zhiji_dic["lk_date"],
+        boardingGate=zhiji_dic["lk_gateno"],
+        deviceCode="T1ZZ002",
+        gateNo=zhiji_dic["lk_gateno"],
+        scenePhoto=pho_dic["scenePhoto_fuhe_dengji"],
+        sourceType=0,
     )
-    logger.info({"登机口系统复核[res.text]":res.text})
-    assert_parm(res.text,result=0)
+    logger.info({"登机口[res.text]":res.text})
 
-    #############################################################################
+    ############################ 登机口回查 ########################################
     from process_test.https_20190709.common.common_method import to_base64
     res = assert_backQuery_byId(idNo=zhiji_dic["idNo"],lk_date=zhiji_dic["lk_date"][-2:])
-    logger.info({"身份证回查":res.text})
-
-
-    # res = AirportProcess().api_face_data_flowback_query(
-    #     reqId=get_uuid(),
-    #     # cardId="142724198605103941",
-    #     flightNo=zhiji_dic["lk_flight"],
-    #     boardingNumber=zhiji_dic["lk_bdno"],
-    #     flightDay=zhiji_dic["lk_date"][-2:],  # 航班dd
-    #     isFuzzyQuery=0,
-    #     # seatId="0INF"
-    # )
-    # logger.info({"票回查":res.text})
+    logger.info({"登机口身份证回查":res.text})
 
 
 if __name__ == '__main__':
