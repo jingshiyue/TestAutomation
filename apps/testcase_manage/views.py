@@ -59,7 +59,8 @@ def detail(request):
         time.sleep(.5)
         return render(request,"testcase_manage/detail.html",locals())
 
-
+def login(request):
+    return render(request,"testcase_manage/login.html",locals())
 
 def queryModulars(request):
     if request.method == 'POST':
@@ -122,7 +123,6 @@ def generateCaseInfo(request):
         time.sleep(2)
         return HttpResponse(content)
 
+def getReport(request,file):
+    return render(request, file + '.html')
 
-# if __name__ == "__main__":
-#     write_to_config("testbed.ini","Product","name","动态布控动态布控")
-#     write_to_config("testbed.ini","Modular","name","数据平台数据平台")
