@@ -1,275 +1,160 @@
-{# 测试主页面 #}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-{% load staticfiles %}
-<head>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
-    <script src="http://malsup.github.io/jquery.form.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css"> -->
-    <script type="text/javascript" src="https://www.huangwx.cn/js/sweetalert-dev.js"></script>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    {# 网页标题内容块 #}
-	<title>测试用例配置</title>
-	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> -->
-	{# 网页顶部引入文件块 #}
-    {% block topfiles %}{% endblock topfiles %}
-    <style>
-        .myform{
-            margin-top: 90px;
-            /* padding-left: 200px; */
-        }
-        .footer {
-            position: absolute;
-            /* position: fixed; */
-            bottom: 0;
-            clear:both;
-            /* width: 100%; */
-            /* Set the fixed height of the footer here */
-            height: 50px;
-            /* background-color: #2a925e; */
-        }
-        .hide{
-                display: none;
-            }
-        /* body.modal-open {
-            overflow-y: auto !important;		
-            padding-right: 0 !important; 
-        } */
-        /* .modal-backdrop {
-            opacity: 0 !important;
-            filter: alpha(opacity=0) !important; 
-        } */
-    </style>
-</head>
-<body>
-    
-     <!-- 模态框（Modal） -->
-    <div class="modal fade text-center " id="myModal" tabindex="-1" role="dialog"
-            aria-labelledby="myModalLabel" aria-hidden="true" >
-       <div class="modal-dialog" style="display: inline-block; width: auto; height: auto;">
-           <div class="modal-content" data-dismiss="modal">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}资产总表{% endblock %}
 
-           </div>
+{% block css %}
+     <link rel="stylesheet" href="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+{% endblock %}
+
+{% block breadcrumb %}
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        资产总表
+        <small>assets list</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">资产总表</li>
+      </ol>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+   <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+
+        <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">资产总表<small>(不含软件)</small></h3>
         </div>
-     </div>
+        <!-- /.box-header -->
+        <div class="box-body">
 
+            <table id="assets_table" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>资产类型</th>
+                        <th>子类型</th>
+                        <th>资产名称</th>
+                        <th>SN</th>
+                        <th>业务线</th>
+                        <th>状态</th>
+                        <th>机房</th>
+                        <th>更新日期</th>
+                        <th>标签</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    <div class="container">
-        <div class="row">
-            <div class="form-group">
-                <h1 class="text-center">测试模块配置</h1>
-            </div>
-            <br>
-            <form  method="POST" class="form-horizontal"  id="productForm">
-                <label for="products" class="col-lg-3 control-label" >项目  </label>
-                <div class="col-lg-6 ">
-                    <select class="selectpicker  form-control" style="text-align: center; text-align-last: center;" name="products" id="products" title="请选择">
-                        {% for product in products %}
-                            <option>{{ product.name }}</option>
-                        {% endfor %}
-                        <option value="" disabled selected hidden>选择项目</option>
-                    </select>
-                </div>
-                <div class="col-lg-1">
-                    <button id="queryModulars" class="btn btn-primary glyphicon glyphicon-search" onclick="return queryModularsFunc()"> 查询模块</button>
-                </div>           
-            </form>
+                {% for asset in assets %}
+
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+
+                        {% if asset.asset_type == 'server' %}
+                          <td class="text-green text-bold">{{ asset.get_asset_type_display }}</td>
+                          <td>{{ asset.server.get_sub_asset_type_display }}</td>
+                        {% elif asset.asset_type == "networkdevice" %}
+                          <td class="text-yellow text-bold">{{ asset.get_asset_type_display }}</td>
+                          <td>{{ asset.networkdevice.get_sub_asset_type_display }}</td>
+                        {% elif asset.asset_type == "storagedevice" %}
+                          <td class="text-blue text-bold">{{ asset.get_asset_type_display }}</td>
+                          <td>{{ asset.storagedevice.get_sub_asset_type_display }}</td>
+                        {% elif asset.asset_type == "securitydevice" %}
+                          <td class="text-red text-bold">{{ asset.get_asset_type_display }}</td>
+                          <td>{{ asset.securitydevice.get_sub_asset_type_display }}</td>
+                        {% endif %}
+
+                        {% if asset.asset_type == 'server' %}
+                            <td><a href="{% url 'assets:detail' asset.id %}">{{ asset.name }}</a></td>
+                        {% else %}
+                            <td>{{ asset.name }}</td>
+                        {% endif %}
+
+                        <td>{{ asset.sn }}</td>
+
+                        <td>{{ asset.business_unit|default_if_none:"-" }}</td>
+
+                        {% if asset.status == 0 %}
+                          <td><label class="label label-success">{{ asset.get_status_display }}</label></td>
+                        {% elif asset.status == 1 %}
+                          <td><label class="label label-warning">{{ asset.get_status_display }}</label></td>
+                        {% elif asset.status == 2 %}
+                          <td><label class="label label-default">{{ asset.get_status_display }}</label></td>
+                        {% elif asset.status == 3 %}
+                          <td><label class="label label-danger">{{ asset.get_status_display }}</label></td>
+                        {% elif asset.status == 4 %}
+                          <td><label class="label label-info">{{ asset.get_status_display }}</label></td>
+                        {% endif %}
+
+                        <td>{{ asset.idc|default:"-" }}</td>
+
+                        <td>{{ asset.m_time|date:"Y/m/d [H:m:s]" }}</td>
+
+                        <td>
+                          {% for tag in asset.tags.all %}
+                            <label class="label label-primary">{{ tag.name }}</label>
+                            {% empty %}
+                              -
+                            {% endfor %}
+                        </td>
+                    </tr>
+
+                {% empty %}
+                <tr>没有数据</tr>
+                {% endfor %}
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>序号</th>
+                        <th>资产类型</th>
+                        <th>子类型</th>
+                        <th>资产名称</th>
+                        <th>SN</th>
+                        <th>业务线</th>
+                        <th>状态</th>
+                        <th>机房</th>
+                        <th>更新日期</th>
+                        <th>标签</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-    </div>
-
-    <div class="container-fluid" >
-        <div class="row" id="modularlist">
-            <form  action="/testcase/index/" method="POST" class="myform" id="modularForm" style="display:none">
-                <table class="table table-hover" id="modularTable">
-                    <thead>
-                        <tr>
-                            <th>选择</th>
-                            <th>模块</th>
-                        </tr>
-                    </thead>
-                    <tbody name="modularBody" id="modularBody">
-                    </tbody>
-                </table> 
-                <input name="modularBut1" class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers_modular()"/>
-                <button name="modularBut2" id="queryCaseButton" class="btn" style="display:none" onclick="return queryCasesFunc()">查询用例</button>
-            </form>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
         </div>
-    </div>
+    <!-- /.col -->
+      </div>
+    <!-- /.row -->
+    </section>
 
-    <div class="container-fluid" >
-        <div class="row" id="caselist">
-            <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseForm" style="display:none">
-                <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
-                <input type="submit" value="执行" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
-                <h3 style="color: cornflowerblue; margin-bottom: 20px; padding-left: 10px;">用 例 列 表</h3>
-                <table class="table table-hover table-striped table-bordered " >
-                    <thead>
-                        <tr>
-                            <th>选择</th>
-                            <th>用例</th>
-                            <th>接口路径</th>
-                            <th>脚本路径</th>
-                            <th>描述</th>
-                        </tr>
-                    </thead>
-                    <tbody name="casebody" id="casebody">
-                    </tbody>
-                </table>
-                <input id="queryCaseButton1" class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
-                <button id="queryCaseButton2" class="btn" style="display:none">执行</button>
-            </form>
-        </div>
-    </div>
+{% endblock %}
 
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-lg-7 footer">
-                <div class="text-center ">
-                    <p><small>CopyRight © 2020 重庆绿色智能技术研究院</small></p>
-                </div>
-            </div>
-        </div>
-    </div> -->
+{% block script %}
 
-</body>
+<script src="{% static 'adminlet-2.4.10/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
 
+<script>
 
-
-    <script>
-        function string2Array(stringObj) {  
-            stringObj = stringObj.replace(/\[([\w, ]*)\]/, "$1");  
-            if (stringObj.indexOf("[") == 0) {// if has chinese  
-                stringObj = stringObj.substring(1, stringObj.length - 1);  
-            }  
-            var arr = stringObj.split(",");
-            var newArray = [];//new Array();  
-            for ( var i = 0; i < arr.length; i++) {  
-                var arrOne = arr[i];  
-                newArray.push(arrOne);  
-            }  
-            // console.log(newArray);  
-            return newArray;  
-        };  
-            
-        function queryModularsFunc(){
-            $("#modularBody").empty()
-            $("#caseForm").hide()
-            $("[name='modularBut1']").hide()
-            $(this).ajaxSubmit({
-                    url:"/testcase/queryModulars/",
-                    async:true,
-                    type:"POST",
-                    data:{"products":$("#products").val()},
-                    success:function(data){
-                        // console.log(data) // { 4: "数据平台", 6: "动态布控测试部门" }
-                        // console.log(typeof(data))
-                        var templateStr = '<tr><td><input type="checkbox" name="modularNum" value={0}></td><td>{1}</td></tr><tr>'
-                        for (var key in data){
-                            var modularContents = String.format(templateStr,key,data[key])
-                            $("#modularBody").append(modularContents)
-                        }
-                        $("#modularForm").show()
-                        var count = Object.keys(data).length
-                        if (count > 1){
-                            $("[name='modularBut1']").show()
-                        }
-                        $("[name='modularBut2']").show()
-                    }
-            });
-            return false;//阻止页面跳转
-        }
-        
-        function queryCasesFunc(){
-            $("#casebody").empty()
-            $("#modularForm").ajaxSubmit({
-                    url:"/testcase/index/",
-                    async:true,
-                    type:"POST",
-                    data:{products:$("#products").val()}, //post自己的data，同时也会把form默认的提交数据也post到后台
-                    success:function(data){
-                        console.log(data)    //data-toggle="modal" data-target="#myModal" href="/testcase/detail/?id={4}"
-                        // var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
-                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={0}" target="_blank" >{1}</a></td><td>{2}</td><td>{4}</td><td>{3}</td></tr>';
-                        var count = 0
-                        for (k in data){
-                            console.log(data[k]["id"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
-                            var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"],data[k]["file_path"])
-                            // var caseContents = String.format(templateStr,k,data[k]["casename"],data[k]["api"],data[k]["desc"])
-                            $("#casebody").append(caseContents)
-                            count++
-                        }
-                        if (count > 0){
-                            $("#caseForm").show()
-                            $("#queryCaseButton1").show()
-                            $("#queryCaseButton2").show()
-                        }else{
-                            // swal("模块下没有可用的用例");
-                            alert("模块下没有可用的用例")
-                        }
-
-                    }
-            });
-            return false;//阻止页面跳转
-        }
-
-        function getCaseConf(){
-            var product = $("#products").val()
-            var modular = $("input[name='modularNum']").val()
-            // console.log(product)
-            console.log(modular)
-            return {product,modular}
-        }
-
-        function sendCaseInfo(){
-            $.ajax({
-                url:"testcase/generateCaseInfo/",
-                async:true,
-                type:"POST",
-                data:{products:$("#products").val(),modulars:"数据平台"},
-                success:function(data){
-                    alert(data)
-                    // console.log(result);
-                    // $("#caselist").html(result);
-            }});
-        }
-
-
-        String.format = function(src){  
-            if (arguments.length == 0) return null;  
-            var args = Array.prototype.slice.call(arguments, 1);  
-            return src.replace(/\{(\d+)\}/g, function(m, i){  
-                return args[i];  
-            });  
-        };  
-
-        //反选
-        function setOthers_modular() {
-            var cases = document.getElementsByName("modularNum");
-            for (var i = 0; i < cases.length; i++) {
-                if (cases[i].checked == false)
-                    cases[i].checked = true;
-                else
-                    cases[i].checked = false;
-            }
-        }
-
-        //反选
-        function setOthers() {
-            var cases = document.getElementsByName("caseNum");
-            for (var i = 0; i < cases.length; i++) {
-                if (cases[i].checked == false)
-                    cases[i].checked = true;
-                else
-                    cases[i].checked = false;
-            }
-        }
-            
-        $("#myModal").on("hidden", function() {
-        $(this).removeData("modal");
+$(function () {
+        $('#assets_table').DataTable({
+          "paging": true,       <!-- 允许分页 -->
+          "lengthChange": true, <!-- 允许改变每页显示的行数 -->
+          "searching": true,    <!-- 允许内容搜索 -->
+          "ordering": true,     <!-- 允许排序 -->
+          "info": true,         <!-- 显示信息 -->
+          "autoWidth": false    <!-- 固定宽度 -->
         });
-    </script>
+      });
 
-</html>
+</script>
+
+{% endblock %}
