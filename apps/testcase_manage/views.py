@@ -124,5 +124,7 @@ def generateCaseInfo(request):
         return HttpResponse(content)
 
 def getReport(request,file):
+    logger.info("********getReport**************")
+    logger.info(file)
     return render(request, file + '.html')
 
