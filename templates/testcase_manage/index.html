@@ -82,7 +82,7 @@
 
     <div class="container-fluid" >
         <div class="row" id="modularlist">
-            <form  action="/testcase/index/" method="POST" class="myform" id="modularForm" style="display:none">
+            <form  action="/index/" method="POST" class="myform" id="modularForm" style="display:none">
                 <table class="table table-hover" id="modularTable">
                     <thead>
                         <tr>
@@ -101,7 +101,7 @@
 
     <div class="container-fluid" >
         <div class="row" id="caselist">
-            <form action="/testcase/generateCaseInfo/" method="POST" class="myform" id="caseForm" style="display:none">
+            <form action="/generateCaseInfo/" method="POST" class="myform" id="caseForm" style="display:none">
                 <input class="btn glyphicon glyphicon-ok" type="button" style="display:none" value="全选" onclick="setOthers()"/>
                 <input type="submit" value="执行" οnclick="sendCaseInfo()" style="display:none" class="btn"/>
                 <h3 style="color: cornflowerblue; margin-bottom: 20px; padding-left: 10px;">用 例 列 表</h3>
@@ -159,7 +159,7 @@
             $("#caseForm").hide()
             $("[name='modularBut1']").hide()
             $(this).ajaxSubmit({
-                    url:"/testcase/queryModulars/",
+                    url:"/queryModulars/",
                     async:true,
                     type:"POST",
                     data:{"products":$("#products").val()},
@@ -185,14 +185,14 @@
         function queryCasesFunc(){
             $("#casebody").empty()
             $("#modularForm").ajaxSubmit({
-                    url:"/testcase/index/",
+                    url:"/index/",
                     async:true,
                     type:"POST",
                     data:{products:$("#products").val()}, //post自己的data，同时也会把form默认的提交数据也post到后台
                     success:function(data){
-                        console.log(data)    //data-toggle="modal" data-target="#myModal" href="/testcase/detail/?id={4}"
-                        // var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
-                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/testcase/detail/?id={0}" target="_blank" >{1}</a></td><td>{2}</td><td>{4}</td><td>{3}</td></tr>';
+                        console.log(data)    //data-toggle="modal" data-target="#myModal" href="/detail/?id={4}"
+                        // var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/detail/?id={4}" data-toggle="modal" data-target="#myModal" >{1}</a></td><td>{2}</td><td>{3}</td></tr>';
+                        var templateStr = '<tr><td><input type="checkbox" name="caseNum" value={0}></td><td><a  href="/detail/?id={0}" target="_blank" >{1}</a></td><td>{2}</td><td>{4}</td><td>{3}</td></tr>';
                         var count = 0
                         for (k in data){
                             console.log(data[k]["id"]) //{casename: "人脸识别记录-详情", api: "/api/v1/face/record/search/details", user: "admin"}
@@ -225,7 +225,7 @@
 
         function sendCaseInfo(){
             $.ajax({
-                url:"testcase/generateCaseInfo/",
+                url:"generateCaseInfo/",
                 async:true,
                 type:"POST",
                 data:{products:$("#products").val(),modulars:"数据平台"},

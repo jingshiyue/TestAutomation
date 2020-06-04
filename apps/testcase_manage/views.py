@@ -122,6 +122,8 @@ def generateCaseInfo(request):
         time.sleep(2)
         return HttpResponse(content)
 
+def getReport(request,file):
+    return render(request, file + '.html')
 
 # if __name__ == "__main__":
 #     write_to_config("testbed.ini","Product","name","动态布控动态布控")

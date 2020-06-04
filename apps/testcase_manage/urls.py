@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 from django.conf import settings
 from . import views
 
@@ -7,5 +7,6 @@ urlpatterns = [
     path('index/',views.testcase_index,name='testcaseIndex'),  #/testcase/index
     path('detail/',views.detail,name='testcaseDetail'), 
     path('queryModulars/',views.queryModulars,name='queryModulars'),
-    path('generateCaseInfo/',views.generateCaseInfo,name='generateCaseInfo')
+    path('generateCaseInfo/',views.generateCaseInfo,name='generateCaseInfo'),
+    re_path('report/(?P<file>\w+)\.html$',views.getReport,name='report'),
 ] 
