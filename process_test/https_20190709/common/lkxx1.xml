@@ -7,28 +7,28 @@
     <Record>
       <Status>Add</Status> 
       <lk_IsInternation>0</lk_IsInternation>   
-      <lk_bdno>018</lk_bdno>     
+      <lk_bdno>004</lk_bdno>     
       <lk_card>0</lk_card>      
-      <lk_cardid>330701198506231831</lk_cardid>  
+      <lk_cardid>510811199607285128</lk_cardid>  
       <lk_chkn>Z22</lk_chkn>         
-      <lk_chkt>20200604111849</lk_chkt> 
+      <lk_chkt>20200605092403</lk_chkt> 
       <lk_class>Y</lk_class>         
-      <lk_cname>二师兄018</lk_cname>    
-      <lk_date>20200604</lk_date>    
+      <lk_cname>二师兄004</lk_cname>    
+      <lk_date>20200605</lk_date>    
       <lk_del>0</lk_del>             
       <lk_dest>CTU</lk_dest>         
       <lk_ename>DAXIGUA7</lk_ename>  
       <lk_flight>9D5671</lk_flight>   
       <lk_gateno>19</lk_gateno>  
-      <lk_id>8004062</lk_id>   
+      <lk_id>6721996</lk_id>   
       <lk_inf />     
       <lk_infname /> 
       <lk_insur>0</lk_insur>    
       <lk_nation />    
-      <lk_outtime>20200604141849</lk_outtime>  
+      <lk_outtime>20200605122403</lk_outtime>  
       <lk_resr>NTQK8C</lk_resr>  
-      <lk_seat>018A</lk_seat>    
-      <lk_sex>1</lk_sex>        
+      <lk_seat>004A</lk_seat>    
+      <lk_sex>2</lk_sex>        
       <lk_strt>HET</lk_strt>    
       <lk_tel>13512134390</lk_tel>   
       <lk_vip>0</lk_vip>   
