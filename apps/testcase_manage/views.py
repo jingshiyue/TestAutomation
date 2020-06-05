@@ -123,8 +123,12 @@ def generateCaseInfo(request):
         return HttpResponse(content)
 
 def getReport(request,file):
+    logger.info("get report")
+    logger.info(file)
     return render(request, file + '.html')
 
+def login(request):
+    return render(request,"share\login\index.html")
 # if __name__ == "__main__":
 #     write_to_config("testbed.ini","Product","name","动态布控动态布控")
 #     write_to_config("testbed.ini","Modular","name","数据平台数据平台")

@@ -61,6 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'report'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -231,6 +232,6 @@ USE_TZ = False
 #     # 'compressor.finders.CompressorFinder',
 # )
 
-STATIC_URL = '/report/'
+STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'report')   #用于生产，debug=False
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'report'),)   #用于debug=Ture
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)   #用于debug=Ture
