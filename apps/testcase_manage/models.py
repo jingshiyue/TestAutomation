@@ -2,19 +2,7 @@ from django.db import models
 from product_manage.models import BaseModel
 from product_manage.models import Product,Modular
 from django.core.exceptions import ValidationError
-# class API(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     modular_name = models.ForeignKey('product_manage.Modular', on_delete=models.SET_NULL, null=True,
-#                                      verbose_name='所属项目')
-#     api_path = models.CharField(max_length=128, verbose_name='接口路径', help_text='e.g. /login')
-#     desc = models.CharField(max_length=128, verbose_name='接口描述')
 
-#     def __str__(self):
-#         return self.modular_name.name + " " + self.api_path
-
-#     class Meta:
-#         verbose_name = '接口管理'
-#         verbose_name_plural = '接口管理'
 import logging
 logger = logging.getLogger(__name__)
 
