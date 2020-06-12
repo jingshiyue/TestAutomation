@@ -36,6 +36,30 @@ tasklist
     7、增加 用例添加界面，后台数据太多，编辑起来不方便 appending
 
 """
+def get_svn_version(root:str,subPath:list):
+    # root = r"D:\proj\DynamicRecognition\\"
+    # subPath = ['data-platform-server','eureka-server','face-business-server','face-recognize-server','stranger-server','zuul-service']
+
+    # Path: D:\proj\DynamicRecognition\data-platform-server
+    # Working Copy Root Path: D:\proj\DynamicRecognition
+    # URL: svn://192.168.10.180/Develop/DynamicRecognition/Export/server/DynamicRecognition/data-platform-server
+    # Relative URL: ^/DynamicRecognition/Export/server/DynamicRecognition/data-platform-server
+    # Repository Root: svn://192.168.10.180/Develop
+    # Repository UUID: d6b87db1-79c2-5347-abe6-e8527e8a93bd
+    # Revision: 6918     本地仓库总版本号
+    # Node Kind: directory
+    # Schedule: normal
+    # Last Changed Author: zhuzhou
+    # Last Changed Rev: 6915   子版本号
+    # Last Changed Date: 2020-06-12 14:57:19 +0800 (Fri, 12 Jun 2020)
+    verDict = {}
+    for i in subPath:
+        for line in os.popen('svn info %s' % root+i).readlines():
+            if "Last Changed Rev" in line:
+                line = line.split("Last Changed Rev:")[1][:-1].strip()
+                verDict.setdefault(i,line)
+    return verDict
+
 
 def send_email(que,product_name:str,timeStr:str):
     if "COMPLATE" in que.get():
@@ -247,17 +271,4 @@ if __name__=="__main__":
 """
 
 if __name__=="__main__":
-    # file = r"D:\workfile\zhongkeyuan_workspace\TestAutomation\logs\youjian.txt"
-    # content = ""
-    # newContent = ""
-    # with open(file,mode='r',encoding='UTF-8') as f:
-    #     content = f.read()
-    # newContent = content[:find_str_idx(content,"<h1>")] + "<h1>动态布控测试报告</h1>" + \
-    #             content[find_str_idx(content,"</h1>") + 
-    #             len("</h1>"):find_str_idx(content,"<h2>Results</h2>")] + "<h2>Results</h2>" + \
-    #             '<h3>报告详情: <a href="http://192.168.1.42:8000/report/report_20200527124022.html" style="color:coral;">http://192.168.1.42:8000/report/report_20200527124022.html</a></h3>' + \
-    #             "</body></html>"
-    # logger.info(newContent)
-    reportHtmlPath = "http://192.168.1.99:8000/report/report_20200527124022.html"
-    con = '<span style="color:coral;font-size:16px;">报告详情: <a href="{0}" target="_blank">{0}</a></span></body></html>'.format(reportHtmlPath)
-    print(con)
+    pass

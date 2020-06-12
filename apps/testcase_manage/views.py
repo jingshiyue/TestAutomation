@@ -9,6 +9,9 @@ logger = logging.getLogger(__name__)
 from conftest import read_from_config,write_to_config
 import queue,threading
 import time,os
+from django.urls import reverse
+from django.shortcuts import redirect
+
 
 def run_test(que):
     import os
@@ -18,6 +21,11 @@ def run_test(que):
     exit()
 
 def testcase_index(request):
+    # logger.info(request.user)
+    # if not request.user.is_authenticated:
+    #     logger.info("meiyou renzheng ")
+    #     toUrl = reverse("testcase_manage:login")
+    #     return redirect(toUrl)
     if request.method =="GET":
         products = Product.objects.all()
         modulars = Modular.objects.all()
@@ -128,7 +136,5 @@ def getReport(request,file):
     return render(request, file + '.html')
 
 def login(request):
-    return render(request,"share\login\index.html")
-# if __name__ == "__main__":
-#     write_to_config("testbed.ini","Product","name","动态布控动态布控")
-#     write_to_config("testbed.ini","Modular","name","数据平台数据平台")
+    return render(request,"share\login\login.html")
+
