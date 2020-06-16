@@ -287,5 +287,5 @@ class Testcase_系统安检_系统复核_登机口人工放行(object):
 if __name__=="__main__":
     pytest.main([
         "runCase.py",
-        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200612141247.html",
+        "-v","-s","--reruns=0","--color=yes","--self-contained-html","--html=./report/report_20200616113307.html",
         ])

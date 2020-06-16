@@ -14,14 +14,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-import pytest
-# from py.xml import html
-d1 = html.p('"值机信息":"航班日期、航班号、登机口、登机序号、座位号、身份证号、姓名"')
-d2 =  html.p('"系统安检":"A门传入身份证+证件照，B门传入身份证+现场照A、现场照特征A+证件照、证件照特征"')
-
-
-
-
 
 def read_from_config(configfile,secion_name, item_name):
     import configparser
@@ -40,9 +32,16 @@ def write_to_config(confPath,secion_name, item_name, value):
         config.write(config_file)
 
 def pytest_configure(config):
+    from startRun import get_svn_version
+    root = r"D:\proj\DynamicRecognition\\"
+    subPath = ['data-platform-server','eureka-server','face-business-server',
+                'face-recognize-server','stranger-server','zuul-service']
+    verDict = get_svn_version(root,subPath)
     try:
-        config._metadata["系统环境"] = "Windows Server 2008 Enterprise"
-        config._metadata["项目名称"] = read_from_config("testbed.ini","Product","name")
+        config._metadata["[系统环境]"] = "Windows Server 2008 Enterprise"
+        config._metadata["[项目名称]"] = read_from_config("testbed.ini","Product","name")
+        for k,v in verDict.items():
+            config._metadata[k +" svn版本号"] = v
     except Exception as e:
         logger.info(e)
     config._metadata.pop("JAVA_HOME")
@@ -50,9 +49,7 @@ def pytest_configure(config):
     config._metadata.pop("Plugins")
     config._metadata.pop("Python")
     config._metadata.pop("Platform")
-    
 
-    
 def pytest_html_results_table_header(cells):
     #设置table的header
     cells.insert(2, html.th('Description'))

@@ -10,4 +10,4 @@ urlpatterns = [
     path('queryModulars/',views.queryModulars,name='queryModulars'),
     path('generateCaseInfo/',views.generateCaseInfo,name='generateCaseInfo'),
     re_path('report/(?P<file>\w+)\.html$',views.getReport,name='report'),
-] 
+]
