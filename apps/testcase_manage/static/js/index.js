@@ -439,13 +439,25 @@
         $.learunindex.loadMenu();
         $.learuntab.init();
         $("#sidebar-menu li a").click(function(){
-            // var con = document.getElementById('myFrame').contentWindow.document.getElementById('list');
-            // console.log(con)
+            $.ajax({
+                type: "post",
+                async: true,
+                // type:"JSON",
+                data: {"products": this.text},
+                url: "/queryModulars/",
+                error: function(request) {},
+                success: function(data) {
+                    alert(data)
 
-            // console.log(document.getElementById('myFrame').contentWindow)
-            con =   $(window.frames["myFrame"]);
-            // var con = $(window.frames["#myFrame"].document);
-            console.log(con)
+                    // d = JSON.parse(data)
+                    // alert(d)
+                    // for(var i=0;i<cars.length;i++){
+
+                    // }
+                }
+              });
+              
+            // $('#myFrame').contents().find("#list").append('<li class="list-li"><div class="list-item"><p><input type="checkbox" name="caseNum" value="#"/><a href="#" style="margin-left: 15px;font-size: 18px;">模块N</a></p><div class="clear"></div></div></li>')
         });
     });
 

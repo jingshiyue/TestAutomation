@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'testcase_manage'
 urlpatterns = [
-    path('index/',views.testcase_index,name='testcaseIndex'),  #/testcase/index
+    path('index/',views.testcase_index,name='testcaseIndex'),  #/index
     path('login/',views.login,name='login'), 
     path('detail/',views.detail,name='testcaseDetail'), 
     path('queryProjs/',views.queryProjs,name='queryProjs'),

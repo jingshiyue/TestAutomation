@@ -75,8 +75,8 @@ def queryProjs(request):
 
 
 def queryModulars(request):
+    logger.info("queryModulars ...")
     if request.method == 'POST':
-        logger.info(request.POST)
         productName = request.POST.get("products")
         logger.info(productName)
         logger.info(type(productName))
