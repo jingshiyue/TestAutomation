@@ -442,24 +442,43 @@
             $.ajax({
                 type: "post",
                 async: true,
-                // type:"JSON",
                 data: {"products": this.text},
                 url: "/queryModulars/",
                 error: function(request) {},
                 success: function(data) {
-                    alert(data)
-
-                    // d = JSON.parse(data)
-                    // alert(d)
-                    // for(var i=0;i<cars.length;i++){
-
-                    // }
+                    var but = '<li ><div class="list-item"><p><input type="button" id="sellectAll1"'
+                        +'style="margin-left: 15px;font-size: 14px;color: cornflowerblue;" value="全&nbsp;&nbsp;选">'
+                        + '<input id="query1" type="submit" style="margin-left: 15px;font-size: 14px;color: cornflowerblue;" '
+                        + ' value="确&nbsp;&nbsp;定"></p><div class="clear"></div></div></li>'
+                    $('#myFrame').contents().find("#list").empty()
+                    $('#myFrame').contents().find("#list").append(but)
+                    for (var key in data){
+                        var tmp = '<li class="list-li"><div class="list-item"><p><input type="checkbox" name="caseNum" value="{0}"/>'
+                        + '<a href="#" style="margin-left: 15px;font-size: 18px;">{1}</a></p><div class="clear"></div></div></li>'
+                        $('#myFrame').contents().find("#list").append(String.format(tmp,key,data[key]))
+                    }
                 }
               });
-              
-            // $('#myFrame').contents().find("#list").append('<li class="list-li"><div class="list-item"><p><input type="checkbox" name="caseNum" value="#"/><a href="#" style="margin-left: 15px;font-size: 18px;">模块N</a></p><div class="clear"></div></div></li>')
         });
     });
 
 })(jQuery);
 
+String.format = function(src){  
+    if (arguments.length == 0) return null;  
+    var args = Array.prototype.slice.call(arguments, 1);  
+    return src.replace(/\{(\d+)\}/g, function(m, i){  
+        return args[i];  
+    });  
+};  
+
+
+$(function(){
+    $('#myFrame').contents().on("click", "#sellectAll1", function() {
+        $("input[name='caseNum']").checked == true
+      });
+
+    $('#myFrame').contents().on("click", "#query1", function() {
+        alert( "确定!" );
+    });
+})
