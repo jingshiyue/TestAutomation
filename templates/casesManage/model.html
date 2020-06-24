@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据模型</title>
+    <link href="/static/plugin/bstable/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/plugin/bstable/css/bootstrap-table.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/model.css">
+</head>
+<body style="background-color: #fff;font-family: 微软雅黑;color: #475059;min-width: 1000px;overflow-y: hidden">
+<div class="model">
+    <div class="model-left">
+        <h6 style="position: relative">模&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;块
+        </h6>
+        <!-- <div class="model-search">
+            <div class="select">
+                <select>
+                    <option>名称</option>
+                    <option>创建人</option>
+                    <option>类型</option>
+                </select>
+            </div>
+            <div class="input">
+                <span class="glyphicon glyphicon-search"></span>
+                <input type="text" placeholder="输入关键词搜索">
+            </div>
+        </div> -->
+        <div class="model-list">
+            <ul id="list">
+                <li >
+                    <div class="list-item">
+                        <p>
+                            <input type="button" style="margin-left: 15px;font-size: 14px;color: cornflowerblue;" value="全&nbsp;&nbsp;选">
+                            <input id="query1" type="submit" style="margin-left: 15px;font-size: 14px;color: cornflowerblue;" value="确&nbsp;&nbsp;定">
+                        </p>
+                        <!-- <span class="r-right glyphicon glyphicon-chevron-down"></span> -->
+                        <div class="clear"></div>
+                    </div>
+                </li>
+                
+                <li class="list-li">
+                    <div class="list-item">
+                        <p><input type="checkbox" name="caseNum" value="#"/><a href="#" style="margin-left: 15px;font-size: 18px;">模块1</a></p>
+                        <!-- <span class="r-right glyphicon glyphicon-chevron-down"></span> -->
+                        <div class="clear"></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="model-right">
+        <div class="model-right-base">
+            <h6>
+                <span>root数据模型</span>
+                <button class="btn btn-primary" onclick="addModel()">编辑模型</button>
+                <button class="btn btn-success">刷新数据</button>
+            </h6>
+            <!-- <div class="model-right-main">
+                <div class="model-right-tabs">
+                    <input type="radio" checked="checked" class="l-left"> <span>直连</span>
+                </div>
+                <div class="model-right-content">
+                    <div class="model-chart"></div>
+                </div>
+            </div> -->
+        </div>
+        <div class="model-right-extract">
+            <div class="model-content">
+                <div class="model-content-left">
+                    <div class="model-content-list" >
+                        <div style="padding-right:17px">
+                            <table class="table table-hover table-striped" style="text-align: center;">
+                                <colgroup>
+                                    <col style="width: 80px;" /><col />
+                                </colgroup>
+                                <thead>
+                                    <tr >
+                                        <th ><input type="checkbox" ></th>
+                                        <th><span >用例名</span></th>
+                                        <th><span >api/路径</span></th>
+                                        <th><span >用例描述</span></th>
+                                        <th><span >详细</span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="dimension-list-item" >
+                            <colgroup><col style="width: 80px;" /><col /></colgroup>
+                            <table class="table table-hover table-striped" style="text-align: center;">
+                                <!-- <thead>
+                                    <tr>
+                                        <th><input type="checkbox"></th>
+                                        <th><span >用例名</span></th>
+                                        <th><span >api/路径</span></th>
+                                        <th><span >用例描述</span></th>
+                                        <th><span >详细</span></th>
+                                    </tr>
+                                </thead> -->
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                               
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>                                  <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>用例1</a></td>
+                                    <td>/api/xxx/xxxx</a></td>
+                                    <td><a href="#">用例1描述</a></td>
+                                    <td><a href="#">详情</a>  |  <a href="#">编辑</a></td>
+                                </tr>  
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="/static/js/jquery-2.2.0.min.js"></script>
+<script src="/static/plugin/bstable/js/bootstrap.min.js"></script>
+<script src="/static/plugin/bstable/js/bootstrap-table.js"></script>
+<script src="/static/plugin/bstable/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="/static/plugin/layer_v2.1/layer/layer.js"></script>
+<script src="/static/js/model.js"></script>
+</html>

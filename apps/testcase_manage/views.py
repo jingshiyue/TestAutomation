@@ -24,7 +24,7 @@ def testcase_index(request):
         # cases = TestCase.objects.all().filter(product_name__name=product,modular_name__name=modular)
         cases = TestCase.objects.all()
         # return HttpResponse(obj)
-        return render(request,'testcase_manage/index.html',locals())  #context={'objs':objs}
+        return render(request,'casesManage\\index.html',locals())  #context={'objs':objs}
     if request.method =="POST":
         logger.info(request.POST)  # <QueryDict: {'modularNum': ['4', '6'], 'products': ['动态布控']}>
         product = request.POST.get("products")
@@ -61,6 +61,18 @@ def detail(request):
 
 def login(request):
     return render(request,"testcase_manage/login.html",locals())
+
+def getModelHmtl(request):
+    return render(request,"casesManage/model.html",locals())
+
+
+def queryProjs(request):
+    if request.method == 'GET':
+        products = Product.objects.all()
+        productsList = [p.name for p in products]
+        productsDict = {"list":productsList}
+        return JsonResponse(productsDict)
+
 
 def queryModulars(request):
     if request.method == 'POST':

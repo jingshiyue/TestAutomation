@@ -7,8 +7,9 @@ urlpatterns = [
     path('index/',views.testcase_index,name='testcaseIndex'),  #/testcase/index
     path('login/',views.login,name='login'), 
     path('detail/',views.detail,name='testcaseDetail'), 
+    path('queryProjs/',views.queryProjs,name='queryProjs'),
     path('queryModulars/',views.queryModulars,name='queryModulars'),
     path('generateCaseInfo/',views.generateCaseInfo,name='generateCaseInfo'),
-    re_path('report/(?P<file>\w+)\.html$',views.getReport,name='report')
-#     re_path(r'(?P<fl_name>\w+)\.html$', views.pt_htm),
+    re_path('report/(?P<file>\w+)\.html$',views.getReport,name='report'),
+    re_path('casesManage/model.html',views.getModelHmtl,name='getModelHmtl')
 ] 
