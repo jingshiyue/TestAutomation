@@ -10,7 +10,7 @@ colorama==0.4.1
 configparser==3.7.4
 cryptography==2.7
 cycler==0.10.0
-Django==2.0
+Django==2.2.24
 django-haystack==2.8.1
 django-simpleui==3.9.1
 enum34==1.1.6
